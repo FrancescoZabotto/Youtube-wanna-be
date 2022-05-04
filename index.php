@@ -25,7 +25,7 @@ if(isset($_SESSION['username'])){
         $row=$result->fetch_assoc();
         print_r($row);
     }*/
-    /*51:21 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/ 
+    /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/ 
     //ho cambiato un po di titoli
 }
 
@@ -55,22 +55,119 @@ if(isset($_SESSION['username'])){
     <a href="<?php echo "login"?>">TESTIAMO TUTTO</a>
 
     <div class="container">
-        <div class="banner">
+        <!-- <div class="banner">
             <img src="static/banner.png">
-        </div>
+        </div> -->
+
         <div class="video">
-            <img src="/static/add.png" alt="" width="32px">
-            <div class="video-list" >
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
                 <div class="flex-div">
-                    <a href=""><img src="/static/video.png" alt="" width="32px"></a>
                     <div class="video-title">
                         <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
                         <p>Descrizione video</p>
                     </div>
                 </div>
             </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt=""  class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    </div>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list">
+                <a href="">
+                    <img src="static/video.png" alt="" class="thumbnail">
+                </a>
+                <div class="flex-div">
+                    <div class="video-title">
+                        <h3>Titolo video</h3>
+                    <div class="video-data">
+                        <p>Descrizione video</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </div> 
+
+
 
     </body>
 </html>

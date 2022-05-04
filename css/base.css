@@ -63,13 +63,49 @@ nav{
 /*main page*/
 /*banner*/
 .container{
+    width: 100%;
     background: #f9f9f9;
-    padding-left: 5%; /* cancellabili*/
-    padding-right: 5%; /* cancellabili*/
     padding-top:20px;
     padding-bottom: 32px;
 }
 .banner{
     width:100%;
     border-radius: 8px;
+}
+
+/*main content*/
+.video{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 20px; 
+    grid-row-gap: 35px;
+    margin-top: 15px;
+}
+.video-list{
+    width:100%;
+}
+.video-list .thumbnail{
+    width:100%;
+    border-radius: 5%; /*5px*/
+    /*width="100px"*/
+
+}
+.video-list .flex-div{
+    align-items: flex-start;
+    margin-top: 10px;
+}
+/*.video-list .flex-div img{
+    width: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+}*/
+.video-title{
+    color:#000;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display:block;
+}
+.video-list .video-view{
+    color:#5a5a5a;
+    font-size: 13px;
 }
