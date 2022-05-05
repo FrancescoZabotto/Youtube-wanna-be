@@ -77,7 +77,7 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
                     
                     $id = $row['video_id'];
 
-                    $_FILES["miniatura"]["name"]="video".$id.".".$extmin; //aggiorna il nome del file
+                    $_FILES["miniatura"]["name"]="miniatura".$id.".".$extmin; //aggiorna il nome del file
                     $_FILES["video"]["name"]="video".$id.".".$extvideo;
 
                     if(is_dir("video/".$username)==true) // impedire errore se non esiste la cartella

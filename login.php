@@ -1,5 +1,8 @@
 <?php
 require "base.php";
+if(isset( $_SESSION['username'])){
+    header("Location: home");
+}
 ?>
 <html>
     <head> 
@@ -26,10 +29,7 @@ require "base.php";
     </body>
 </html>
 <?php
-if(isset( $_SESSION['username'])){
-     header("Location: home");
-}
-else if(isset($_POST['username']) || isset($_POST['password'])){
+if(isset($_POST['username']) || isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     echo md5($password)."<br>";

@@ -11,11 +11,14 @@ if(isset( $_SESSION['username'])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM user 
-    INNER JOIN canale ON canale.username=user.username 
-    INNER JOIN iscrizionipersona ON iscrizionipersona.username=user.username 
-    INNER JOIN impostazioni ON impostazioni.username=user.username 
+    //da modificare
+    $sql = "SELECT * FROM utenti 
+    INNER JOIN canale ON canale.username=utenti.username 
+    INNER JOIN video ON video.username=utenti.username
+    INNER JOIN iscrizioni_persona ON iscrizionipersona.username=utenti.username
+    INNER JOIN impostazioni ON impostazioni.username=utenti.username 
     WHERE username = '$username'";
+
     $result = $conn->query($sql);
     
     if($result->num_rows > 0){

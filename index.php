@@ -4,7 +4,6 @@ require "base.php";
 if(isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $conn = new mysqli("localhost", "root", "", "ProjectFinale");
-    echo $username;
 
     //session_unset();
 
@@ -19,6 +18,11 @@ if(isset($_SESSION['username'])){
     INNER JOIN iscrizioni_persona ON iscrizionipersona.username=utenti.username
     INNER JOIN impostazioni ON impostazioni.username=utenti.username 
     WHERE username = '$username'";
+    //posso fare if con php
+
+    //per il fatto di chiaro o scuro, o fai con la session oppure fai 2 file css chiaro e scuro e ti adatti a mostrare in base all'impostazione
+    
+
     /*$result = $conn->query($sql);
     if($result->num_rows != 0){
         print_r($result);
@@ -30,8 +34,23 @@ if(isset($_SESSION['username'])){
 }
 
 ?>
+
 <html>
     <body>
+
+    <script>
+    var Dativideo;
+    var req = new XMLHttpRequest(); 
+    fetch("inviavideo.php").then((response) => {
+        return response.json();
+    }).then((data) => {
+        Dativideo = data;
+        console.log(Dativideo); //passa i dati dei video
+        //ciao(); posso fare le funzioni qui dentro per tenere i dati
+        //document.getElementById("video").innerHTML = data; cambio html direttamente da qui
+    });   
+    </script>
+    
 
     <nav class="flex-div">
         <div class="nav-left flex-div">
@@ -46,7 +65,7 @@ if(isset($_SESSION['username'])){
         </div>  
         <div class="nav-right flex-div">   
             <img src="static/add.png">
-            <img src="static/user.png" class="user-icon">
+            <?php if(isset($_SESSION['username'])){echo "<a href='login'>".$_SESSION['username']."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
         </div>   
     </nav>
 
