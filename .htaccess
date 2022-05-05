@@ -11,6 +11,8 @@ RewriteRule ^login$ login.php  [L]
 RewriteRule ^register$ register.php  [L]
 RewriteRule ^logout$ logout.php  [L]
 RewriteRule ^uploadvideo$ uploadvideo.php  [L]
+RewriteRule ^canale$ canale.php  [L]
+
 
 RewriteRule ^ index.php [L]
 </IfModule>

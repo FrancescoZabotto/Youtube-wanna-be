@@ -65,14 +65,10 @@ if(isset($_SESSION['username'])){
         </div>  
         <div class="nav-right flex-div">   
             <img src="static/add.png">
-            <?php if(isset($_SESSION['username'])){echo "<a href='login'>".$_SESSION['username']."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
+            <?php if(isset($_SESSION['username'])){echo "<a href='canale'>".$_SESSION['username']."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
         </div>   
     </nav>
-
-    <a href="unset.php">unset</a>
-
-    <a href="<?php echo "login"?>">TESTIAMO TUTTO</a>
-
+    
     <div class="container">
         <!-- <div class="banner">
             <img src="static/banner.png">

@@ -1,6 +1,12 @@
 <?php
 require "base.php";
 ?>
+<!DOCTYPE html>
+<html>
+<body>
+<a href="unset.php">unset</a>
+</body>
+</html>
 
 <?php
 if(isset( $_SESSION['username'])){
@@ -21,11 +27,11 @@ if(isset( $_SESSION['username'])){
 
     $result = $conn->query($sql);
     
-    if($result->num_rows > 0){
+    /*if($result->num_rows > 0){
        
         
 
-    }
+    }*/
 
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 02, 2022 alle 07:57
+-- Creato il: Mag 05, 2022 alle 17:29
 -- Versione del server: 10.4.21-MariaDB
 -- Versione PHP: 8.0.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `canale` (
   `total_dislikes` int(32) DEFAULT NULL,
   `subscibes` int(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `canale`
+--
+
+INSERT INTO `canale` (`username`, `total_views`, `total_likes`, `total_dislikes`, `subscibes`) VALUES
+('zabo', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,13 +115,21 @@ INSERT INTO `utenti` (`email`, `nome`, `cognome`, `username`, `password`) VALUES
 
 CREATE TABLE `video` (
   `video_id` int(64) NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `likes` int(8) DEFAULT NULL,
-  `dislikes` int(8) DEFAULT NULL,
-  `videoview` int(12) DEFAULT NULL,
-  `datains` date DEFAULT NULL,
-  `descrizione` text DEFAULT NULL
+  `username` varchar(255) NOT NULL,
+  `likes` int(8) NOT NULL DEFAULT 0,
+  `dislikes` int(8) NOT NULL DEFAULT 0,
+  `videoview` int(12) NOT NULL DEFAULT 0,
+  `datains` datetime NOT NULL,
+  `descrizione` text DEFAULT NULL,
+  `titolo` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `video`
+--
+
+INSERT INTO `video` (`video_id`, `username`, `likes`, `dislikes`, `videoview`, `datains`, `descrizione`, `titolo`) VALUES
+(81, 'zabo', 0, 0, 0, '2022-05-05 17:28:07', 'GAY', 'SESSO');
 
 --
 -- Indici per le tabelle scaricate
@@ -174,7 +189,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT per la tabella `video`
 --
 ALTER TABLE `video`
-  MODIFY `video_id` int(64) NOT NULL AUTO_INCREMENT;
+  MODIFY `video_id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- Limiti per le tabelle scaricate
