@@ -48,7 +48,18 @@ if(isset($_SESSION['username'])){
         console.log(Dativideo); //passa i dati dei video
         //ciao(); posso fare le funzioni qui dentro per tenere i dati
         //document.getElementById("video").innerHTML = data; cambio html direttamente da qui
-    });   
+        console.log(Dativideo['user']['1']['titolo']);
+        titolo(Dativideo['user']['1']['titolo']);
+    }); 
+    
+    function titolo(titolo){
+        
+        for(var a=1;a<5; a++){
+        document.getElementById("titolo"+a).innerHTML = "sess"; //+2
+        document.getElementById("link1").getAttribute("href")= "18";
+        }
+    };
+    
     </script>
     
 
@@ -64,7 +75,7 @@ if(isset($_SESSION['username'])){
             <img src="static/search.png" class="mic-icon">
         </div>  
         <div class="nav-right flex-div">   
-            <img src="static/add.png">
+            <a href="uploadvideo"><img src="static/add.png"></a>
             <?php if(isset($_SESSION['username'])){echo "<a href='canale'>".$_SESSION['username']."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
         </div>   
     </nav>
@@ -76,14 +87,14 @@ if(isset($_SESSION['username'])){
 
         <div class="video">
             <div class="video-list">
-                <a href="">
+                <a id="link1" href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
                 <div class="flex-div">
-                    <div class="video-title">
+                    <div id="titolo1" class="video-title">
                         <h3>Titolo video</h3>
                     </div>
-                    <div class="video-data">
+                    <div id="desc1"class="video-data">
                         <p>Descrizione video</p>
                     </div>
                 </div>

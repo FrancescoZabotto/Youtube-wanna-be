@@ -21,7 +21,7 @@ if(isset( $_SESSION['username'])){
     $sql = "SELECT * FROM utenti 
     INNER JOIN canale ON canale.username=utenti.username 
     INNER JOIN video ON video.username=utenti.username
-    INNER JOIN iscrizioni_persona ON iscrizionipersona.username=utenti.username
+    INNER JOIN iscrizioni_persona ON iscrizioni_persona.iscrivente=utenti.username
     INNER JOIN impostazioni ON impostazioni.username=utenti.username 
     WHERE username = '$username'";
 
