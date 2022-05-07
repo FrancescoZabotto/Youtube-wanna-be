@@ -39,6 +39,7 @@ if(isset($_SESSION['username'])){
     <body>
 
     <script>
+    document.getElementById("titolo1").innerHTML = "sess"; //+2
     var Dativideo;
     var req = new XMLHttpRequest(); 
     fetch("inviavideo.php").then((response) => {
@@ -63,11 +64,12 @@ if(isset($_SESSION['username'])){
         document.getElementById("video-list"+i).getElementsByTagName("a")[0].getElementsByTagName("img")[0].src = 'video\\'+ Dativideo["user"]["1"]["username"]+"\\"+'^miniatura.*';
         document.getElementById("video-list"+i).getElementsByTagName("a")[0].getElementsByTagName("img")[0].alt = Dativideo["user"][i]["video_id"];
         
-        console.log(document.getElementById("video-list1").getElementsByTagName("a")[0].getElementsByTagName("img")[0].src);
+
+        /*console.log(document.getElementById("video-list1").getElementsByTagName("a")[0].getElementsByTagName("img")[0].src);
         console.log(Dativideo["user"][i]["username"]);
 
-
-        console.log(Dativideo['user']['1']['titolo']);
+        
+        console.log(Dativideo['user']['1']['titolo']);*/
         titolo(Dativideo['user']['1']['titolo']);
     }
     });   
@@ -119,7 +121,6 @@ if(isset($_SESSION['username'])){
                 </a>
                 <div class="flex-div">
                     <div id="titolo1"class="video-title">
-
                         <h3>Titolo video</h3>
                     </div>
                     <div id="desc1"class="video-data">
