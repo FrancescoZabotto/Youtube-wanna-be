@@ -12,6 +12,7 @@ if(isset( $_SESSION['username'])){
     $iscritti = "SELECT COUNT(iscrizioni_persona.canaleuser) FROM iscrizioni_persona
     WHERE iscrizioni_persona.iscrivente='$username'";
 
+
     $sql1 = "SELECT * FROM utenti 
     INNER JOIN canale ON canale.username=utenti.username";
 

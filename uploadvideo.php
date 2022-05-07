@@ -122,15 +122,15 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
             
             }
             else{
-                echo "Problema con l'inserimento del video nel database";
-                $conn->close();
-            }
-        }
-        else{
-            echo "Formato non consentito o dimensione dei file troppo grandi (max dimensione video = 50 gb e max dimensione miniatura = 1 gb)";
+            echo "Problema con l'inserimento del video nel database";
+            $conn->close();
         }
     }
     else{
-        echo "File non valido";
+        echo "Formato non consentito o dimensione dei file troppo grandi (max dimensione video = 50 gb e max dimensione miniatura = 1 gb)";
+    }
+}
+elseif(isset($_POST['upload'])){
+    echo "Ci sono problemi con i tuoi file";
 }
 ?>

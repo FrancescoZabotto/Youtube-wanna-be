@@ -65,6 +65,10 @@ if(isset($_SESSION['username'])){
         
         console.log(document.getElementById("video-list1").getElementsByTagName("a")[0].getElementsByTagName("img")[0].src);
         console.log(Dativideo["user"][i]["username"]);
+
+
+        console.log(Dativideo['user']['1']['titolo']);
+        titolo(Dativideo['user']['1']['titolo']);
     }
     });   
 
@@ -76,7 +80,13 @@ if(isset($_SESSION['username'])){
         }
         document.getElementById("immvideo"+i).getElementsByTagName("href").innerHTML = Dativideo["user"]["1"]["id"];
     }
-
+    function titolo(titolo){
+        
+        for(var a=1;a<5; a++){
+        document.getElementById("titolo"+a).innerHTML = "sess"; //+2
+        document.getElementById("link1").getAttribute("href")= "18";
+        }
+    };
     </script>
     
 
@@ -104,14 +114,15 @@ if(isset($_SESSION['username'])){
 
         <div class="video">
             <div class="video-list" id="video-list1">
-                <a href="">
+                <a href="" id="link1">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
                 <div class="flex-div">
-                    <div id="video1"class="video-title">
+                    <div id="titolo1"class="video-title">
+
                         <h3>Titolo video</h3>
                     </div>
-                    <div class="video-data">
+                    <div id="desc1"class="video-data">
                         <p>Descrizione video</p>
                     </div>
                 </div>
