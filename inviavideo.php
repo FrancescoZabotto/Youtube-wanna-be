@@ -103,7 +103,6 @@ if($result->num_rows != 0){
     $Dativideo['anime'] = $TOT;
 }
 
-
 $JSON = json_encode($Dativideo);
 
 echo $JSON;

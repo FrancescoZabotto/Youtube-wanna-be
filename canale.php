@@ -1,14 +1,5 @@
 <?php
 require "base.php";
-?>
-<!DOCTYPE html>
-<html>
-<body>
-<a href="unset.php">unset</a>
-</body>
-</html>
-
-<?php
 if(isset( $_SESSION['username'])){
 
     $username = $_SESSION['username'];
@@ -18,15 +9,19 @@ if(isset( $_SESSION['username'])){
     }
 
     //da modificare
-    $sql = "SELECT * FROM utenti 
-    INNER JOIN canale ON canale.username=utenti.username 
-    INNER JOIN video ON video.username=utenti.username
-    INNER JOIN iscrizioni_persona ON iscrizionipersona.username=utenti.username
-    INNER JOIN impostazioni ON impostazioni.username=utenti.username 
-    WHERE username = '$username'";
+    $iscritti = "SELECT COUNT(iscrizioni_persona.canaleuser) FROM iscrizioni_persona
+    WHERE iscrizioni_persona.iscrivente='$username'";
 
-    $result = $conn->query($sql);
-    
+    $sql1 = "SELECT * FROM utenti 
+    INNER JOIN canale ON canale.username=utenti.username";
+
+    $sql2="SELECT iscrizioni_persona.canaleuser FROM iscrizioni_persona
+    WHERE iscrizioni_persona.iscrivente='$username';";
+
+
+    /*$result = $conn->query($sql1);
+    var_dump($result);
+    echo $result;*/
     /*if($result->num_rows > 0){
        
         
@@ -35,5 +30,14 @@ if(isset( $_SESSION['username'])){
 
 
 }
+?>
+<!DOCTYPE html>
+<html>
+<body>
+<a href="unset.php">unset</a>
+</body>
+</html>
+
+<?php
 
 ?>

@@ -46,15 +46,43 @@ if(isset($_SESSION['username'])){
     }).then((data) => {
         Dativideo = data;
         console.log(Dativideo); //passa i dati dei video
+        
         //ciao(); posso fare le funzioni qui dentro per tenere i dati
         //document.getElementById("video").innerHTML = data; cambio html direttamente da qui
+        
+        console.log(Dativideo["user"]["1"]["video_id"]);
+        
+        var espressione = new RegExp('^miniatura[0-9]+\.(jpg|jpeg|png|gif)$');
+        var espressione1 = new RegExp('^miniatura.*');
+
+        console.log('video\\'+Dativideo["user"]["1"]["username"]+"\\"+espressione);
+        
+        for(var i = 1; i < Dativideo["user"].length; i++){
+        document.getElementById("video-list"+i).getElementsByTagName("a")[0].href = "video.php?video_id=" + Dativideo["user"][i]["video_id"];
+
+        document.getElementById("video-list"+i).getElementsByTagName("a")[0].getElementsByTagName("img")[0].src = 'video\\'+ Dativideo["user"]["1"]["username"]+"\\"+'^miniatura.*';
+        document.getElementById("video-list"+i).getElementsByTagName("a")[0].getElementsByTagName("img")[0].alt = Dativideo["user"][i]["video_id"];
+        
+        console.log(document.getElementById("video-list1").getElementsByTagName("a")[0].getElementsByTagName("img")[0].src);
+        console.log(Dativideo["user"][i]["username"]);
+    }
     });   
+
+    //funzione che mi permette di inserire i dati nei videotitle
+    function ciao(){
+        var i;
+        for(i=0; i<Dativideo.length; i++){
+            document.getElementById("video"+i).innerHTML = Dativideo[i].titolo;
+        }
+        document.getElementById("immvideo"+i).getElementsByTagName("href").innerHTML = Dativideo["user"]["1"]["id"];
+    }
+
     </script>
     
 
     <nav class="flex-div">
         <div class="nav-left flex-div">
-            <img src="static/youtubewhite.png" class="logo">
+            <a href="home"><img src="static/youtubewhite.png" class="logo"></a>
         </div>
         <div class="nav-middle flex-div">
             <div class="search-box">
@@ -64,7 +92,7 @@ if(isset($_SESSION['username'])){
             <img src="static/search.png" class="mic-icon">
         </div>  
         <div class="nav-right flex-div">   
-            <img src="static/add.png">
+            <a href="uploadvideo"><img src="static/add.png"></a>
             <?php if(isset($_SESSION['username'])){echo "<a href='canale'>".$_SESSION['username']."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
         </div>   
     </nav>
@@ -75,12 +103,12 @@ if(isset($_SESSION['username'])){
         </div> -->
 
         <div class="video">
-            <div class="video-list">
+            <div class="video-list" id="video-list1">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
                 <div class="flex-div">
-                    <div class="video-title">
+                    <div id="video1"class="video-title">
                         <h3>Titolo video</h3>
                     </div>
                     <div class="video-data">
@@ -88,8 +116,8 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
-                <a href="">
+            <div class="video-list" id="video-list2">
+                <a href="" >
                     <img src="static/video.png" alt=""  class="thumbnail">
                 </a>
                 <div class="flex-div">
@@ -101,7 +129,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list3">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
@@ -114,7 +142,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list4">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
@@ -127,7 +155,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list5">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
@@ -140,7 +168,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list6">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
@@ -153,7 +181,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list7">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
@@ -166,7 +194,7 @@ if(isset($_SESSION['username'])){
                     </div>
                 </div>
             </div>
-            <div class="video-list">
+            <div class="video-list" id="video-list8">
                 <a href="">
                     <img src="static/video.png" alt="" class="thumbnail">
                 </a>
