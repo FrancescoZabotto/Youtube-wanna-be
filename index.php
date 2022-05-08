@@ -92,125 +92,139 @@ if(isset($_SESSION['username'])){
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 2">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="2">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 3">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="3">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 4">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="4">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                 </div>
                 <div class="row" style="padding-top:10px">
 
                     <div class="col-12 col-md-6 col-lg-3 1">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="5">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 2">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="6">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 3">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="7">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-md-6 col-lg-3 4">
-                    <div class="card">
-                        <img class="video" src="..." alt="Card image cap">
-                            <div class="video-info">
-                                <div class="card-text">
-                                    <h5 class="card-title">Card title</h5>
-                                    <div>USERNAME</div>
-                                    <div class="row">
-                                        <div class="col-4">views</div>
-                                        <div class="col-4">likes</div>
-                                        <div class="col-4">dislikes</div>
+                    <a href="" id="8">
+                            <div class="card" >
+                                <img class="video" src="..." alt="Card image cap">
+                                <div class="video-info">
+                                        <div class="card-text">
+                                        <h5 class="card-title">Card title</h5>
+                                        <div>USERNAME</div>
+                                        <div class="row">
+                                            <div class="col-4">views</div>
+                                            <div class="col-4">like</div>
+                                            <div class="col-4">dislike</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                 </div>
