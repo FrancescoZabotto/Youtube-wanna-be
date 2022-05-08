@@ -14,14 +14,12 @@ if(isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $sql1 = "SELECT video_id,username,titolo,videoview,datains FROM video
     WHERE username = '$username'
-    ORDER BY video.datains DESC LIMIT 10";
+    ORDER BY video.datains DESC LIMIT 8";
     $result = $conn->query($sql1);
     if($result->num_rows != 0){
         $TOT=array();
-        $n=1;
     while($row = $result->fetch_assoc()){
-            $TOT[$n] = $row;
-            $n++;
+            $TOT[] = $row;
     }   
         $Dativideo['user'] = $TOT;
     }
@@ -31,14 +29,12 @@ if(isset($_SESSION['username'])){
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='videogiochi'
-ORDER BY video.datains DESC LIMIT 10";
+ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
-    $n=1;
     while($row = $result->fetch_assoc()){
-        $TOT[$n] = $row;
-        $n++;
+        $TOT[] = $row;
     }
     $Dativideo['videogiochi'] = $TOT;
 }
@@ -46,7 +42,7 @@ if($result->num_rows != 0){
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='cucina'
-ORDER BY video.datains DESC LIMIT 10";
+ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
@@ -61,7 +57,7 @@ if($result->num_rows != 0){
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='sport'
-ORDER BY video.datains DESC LIMIT 10";
+ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
@@ -76,7 +72,7 @@ if($result->num_rows != 0){
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='musica'
-ORDER BY video.datains DESC LIMIT 10";
+ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
@@ -91,7 +87,7 @@ if($result->num_rows != 0){
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='anime'
-ORDER BY video.datains DESC LIMIT 10";
+ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();

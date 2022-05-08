@@ -1,31 +1,30 @@
 <?php
 require "base.php";
+$version = time(); 
 if(isset( $_SESSION['username'])){
     header("Location: home");
 }
 ?>
 <html>
     <head> 
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/login.css?v=<?php echo $version?>">
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 offset-md-4">
-                    <form action="login.php" method="post">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
+    <div class="login-container">
+        <div class="login-form">
+        <form method="post">
+            <h1 style="color:#f26964">LOGIN</h1>
+            <input type="text"  id="username" name="username" placeholder="Nome Utente" required>
+            <input placeholder="Password" type="password" name="password" id="password" required/>
+            <button class="btn" type="submit">Log in</button>
+        </form>
+        <footer>
+            <h5 >Non hai un account?<a href="register" style="color:#f26964">Registrati</a></h5>
+            <br>
+            <h5><a href="home" style="color:#f26964">Torna alla Home</a></h5>
+        </footer>
         </div>
+    </div>
     </body>
 </html>
 <?php

@@ -1,35 +1,31 @@
 <?php
 require "base.php";
+$version = time(); 
+
 ?>
 <html>
     <body>
-    <form method="post" >
-        <div class="form-group">
-            <label for="nome">Name</label>
-            <input type="text"  id="name" name="nome" placeholder="Nome" required>
+        <head>
+        <link rel="stylesheet" href="./css/login.css?v=<?php echo $version?>">
+        </head>
+    <div class="login-container">
+        <div class="login-form">
+        <form method="post" class="row" style="width:650px;">
+            <h1 class="col-12" style="color:#f26964">Registrazione</h1>
+            <input class="col-12 col-md-6" type="text"  id="name" name="nome" placeholder="Nome" required>
+            <input class="col-12 col-md-6" type="text" id="cognome" name="cognome" placeholder="Cognome" required>
+            <input class="col-12" type="email" id="email" name="email" placeholder="Email" required>
+            <input class="col-12" type="text"  id="username" name="username" placeholder="Username" required>
+            <input class="col-12 col-md-6" type="password" id="password" name="password" placeholder="Password" required>
+            <input class="col-12 col-md-6" type="password" id="confirm_password" name="confirm_password" placeholder="Conferma Password" required>
+            <button type="submit" class="btn">Registrati</button>
+        </form>
+        <footer>
+            <h5 >Hai già un account?<a href="login" style="color:#f26964">Accedi</a></h5>
+            <br>
+            <h5><a href="home" style="color:#f26964">Torna alla Home</a></h5>
+        </footer>
         </div>
-        <div class="form-group">
-            <label for="cognome">Surname</label>
-            <input type="text" id="cognome" name="cognome" placeholder="Cognome" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter email" required>
-        </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text"  id="username" name="username" placeholder="Enter username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-        
   </body>
 </html>
 

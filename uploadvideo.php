@@ -1,5 +1,6 @@
 <?php
 require "base.php";
+$version = time(); 
 if(isset( $_SESSION['username'])){
 }
 else{
@@ -7,22 +8,33 @@ else{
 }
 ?>
 <html>
-<body>
-    <form action="" method="post" enctype="multipart/form-data">
-    
-    <label for="titolo">Titolo</label><br>
-    <input type="text" name="titolo" placeholder="Titolo"><br><br>
+    <head>
+        <link rel="stylesheet" href="./css/login.css?v=<?php echo $version?>">
+    </head>
 
-    <label for="titolo">Descrizione</label><br>
-    <input type="text" name="descrizione" placeholder="Descrizione"><br><br>
-    
-    <label for="miniatura">Miniatura</label><br>
-    <input type="file" name="miniatura"><br><br>
 
-    <label for="video">Video</label><br>
-    <input type="file" name="video"><br><br>
-    <input type="submit" name="upload" value="Carica Video"><br>
-</form> 
+    <div class="login-container">
+        <div class="login-form">
+        <form action="" method="post" enctype="multipart/form-data" style="width:800px;">
+            <h1 style="color:#f26964">Inserisci Video</h1>
+            <input type="text" name="titolo" placeholder="Titolo" required>
+            <input style="height:200px;" type="text" name="descrizione" placeholder="Descrizione" required>
+            <label for="miniatura">Inserisci Miniatura</label>
+            <input type="file" name="miniatura" required>
+            <label for="video">Inserisci Video</label>
+            <input type="file" name="video" required>
+            <button class="btn" name="upload" type="submit">Upload</button>
+        </form>
+        <footer>
+            <h5><a href="home" style="color:#f26964">Torna alla Home</a></h5>
+        </footer>
+        </div>
+    </div>
+
+    <script>
+    //document.getElementById('multifile').value = "";// se va mostra che il video è andato a buon fine
+    </script>
+
 </body>
 </html>
 
@@ -106,6 +118,10 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
                         //upload miniatura
                         if(move_uploaded_file($_FILES["miniatura"]["tmp_name"], $target_imm)) {
                             echo "The file ".htmlspecialchars( basename( $_FILES["miniatura"]["name"])). " has been uploaded.";
+                            $_FILES=NULL;
+                            $_POST=NULL;
+                            var_dump($_FILES);
+                            var_dump($_POST);
                         } 
                         else{
                             echo "Sorry, there was an error uploading your file.";
