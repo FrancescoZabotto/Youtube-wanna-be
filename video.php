@@ -45,17 +45,28 @@ $result = $conn->query($sql1);
 ?>
 <!DOCTYPE html>
 <html>
-<body style="padding-top: 10px; padding-left:10px; width: 100%;">
-    <video id="myVideo" width="auto" height="auto" controls>
+<head>
+<link rel="stylesheet" href="./css/video.css">
+</head>
+<body style="width: 100%;">
+<div class="video-container">
+    <video id="myVideo" controls>
         <source src="<?php echo $actual_link; ?>" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     <h2><?php echo $titolo; ?></h2>
     <p><?php echo $descrizione; ?></p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium animi debitis obcaecati nesciunt tempora deleniti sapiente corrupti assumenda ratione nisi in aperiam, veritatis illum voluptatem. Quae et quas mollitia explicabo.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, eos? Sunt, voluptate. Delectus voluptate nulla sapiente aspernatur voluptatum, error mollitia, rerum praesentium hic perferendis molestiae. Provident dolore reprehenderit soluta fuga?</p>
+    <br>
+    
+    
+
+    
+
     <script>
         var video = document.getElementById("myVideo");
         video.play();
     </script>
-
 </body>
 </html> 
