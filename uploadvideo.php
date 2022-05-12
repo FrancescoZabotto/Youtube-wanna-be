@@ -18,7 +18,8 @@ else{
         <form action="" method="post" enctype="multipart/form-data" style="width:800px;">
             <h1 style="color:#f26964">Inserisci Video</h1>
             <input type="text" name="titolo" placeholder="Titolo" required>
-            <input style="height:200px;" type="text" name="descrizione" placeholder="Descrizione" required>
+            <!-- textarea come descrizione, ma bloacca heght<textarea class="form-control" type="text" name="descrizione" placeholder="Descrizione" style="height: 200px" required></textarea> -->
+            <!-- <input style="height:200px;" type="text" name="descrizione" placeholder="Descrizione" required>  -->
             <label for="miniatura">Inserisci Miniatura</label>
             <input type="file" name="miniatura" required>
             <label for="video">Inserisci Video</label>

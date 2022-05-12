@@ -48,20 +48,35 @@ $result = $conn->query($sql1);
 <head>
 <link rel="stylesheet" href="./css/video.css">
 </head>
-<body style="width: 100%;">
-<div class="video-container">
-    <video id="myVideo" controls>
-        <source src="<?php echo $actual_link; ?>" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    <h2><?php echo $titolo; ?></h2>
-    <p><?php echo $descrizione; ?></p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium animi debitis obcaecati nesciunt tempora deleniti sapiente corrupti assumenda ratione nisi in aperiam, veritatis illum voluptatem. Quae et quas mollitia explicabo.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, eos? Sunt, voluptate. Delectus voluptate nulla sapiente aspernatur voluptatum, error mollitia, rerum praesentium hic perferendis molestiae. Provident dolore reprehenderit soluta fuga?</p>
-    <br>
-    
-    
-
+<body>
+<div class="video-c"> <!--stai attento al paddding con il cell-->
+    <div class="row">
+        <div class="video-container">
+            <video id="myVideo" class="video" controls>
+                <source src="<?php echo $actual_link; ?>" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+        <div class="video-info">
+            <h2><?php echo $titolo; ?></h2>
+            <div class="row">
+                <div class="col-sm-6">views</div>
+                <div class="col-sm-3">like</div>
+                <div class="col-sm-3">dislike</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">Canale</div>
+                <div class="col-sm-3">iscritti</div>
+                <div class="col-sm-3">subscribe</div>
+            </div>
+            <hr>
+            <p><?php echo $descrizione; ?></p>
+            <hr>
+        </div>
+        </div>
+    </div>
+</div>
     
 
     <script>
