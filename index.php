@@ -1,6 +1,6 @@
 <?php
 require "base.php";
-
+require "navabar.php";
 if(isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $conn = new mysqli("localhost", "root", "", "ProjectFinale");
@@ -15,56 +15,23 @@ if(isset($_SESSION['username'])){
         $shortu=$username;
     }
 
+    $_SESSION['usernameshort']=$shortu;
+
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
-    
+}
+
     /* la chiamo sia qui che su canale, prova a vedere se riesci a chiamarla una volta sola */
-    $sql = "SELECT * FROM utenti 
-    INNER JOIN canale ON canale.username=utenti.username 
-    INNER JOIN video ON video.username=utenti.username
-    INNER JOIN iscrizioni_persona ON iscrizionipersona.username=utenti.username
-    INNER JOIN impostazioni ON impostazioni.username=utenti.username 
-    WHERE username = '$username'";
-    //posso fare if con php
 
     //per il fatto di chiaro o scuro, o fai con la session oppure fai 2 file css chiaro e scuro e ti adatti a mostrare in base all'impostazione
     
-
-    /*$result = $conn->query($sql);
-    if($result->num_rows != 0){
-        print_r($result);
-        $row=$result->fetch_assoc();
-        print_r($row);
-    }*/
     /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/ 
     //ho cambiato un po di titoli
-}
-
 ?>
 <!DOCTYPE html>
 <html>
     <body>
-
-
-    <header>
-    <nav class="flex-div">
-        <div class="nav-left flex-div">
-            <a href="home"><img src="static/youtubewhite.png" class="logo"></a>
-        </div>
-        <div class="nav-middle flex-div">
-            <div class="search-box">
-                <input type="search" placeholder="Cerca">
-                <img src="static/search.png" class="mic-icon">
-            </div>
-            <img src="static/search.png" class="mic-icon">
-        </div>  
-        <div class="nav-right flex-div">   
-            <a href="uploadvideo"><img src="static/add.png"></a>
-            <?php if(isset($_SESSION['username'])){echo "<a href='canale'>".$shortu."</a>";}else{ echo "<a href='login'><img src='static/user.png' class='user-icon'></a>";}?>      
-        </div>   
-    </nav>
-    </header>
 
     <div class="container" style="padding-top:20px"> <!--stai attento al paddding con il cell-->
         <div class="user">
@@ -72,20 +39,45 @@ if(isset($_SESSION['username'])){
             <div class="video-user-container">
                 <div class="row">
                 </div>
-                <div class="row">
-                </div>
             </div>
         </div>
         <div class="videogame" style="padding-top:20px">
             <div class="write"><h3>VIDEOGAME</h3></div>
-            <div class="video-user-container">
-                <div class="row">
-                </div>
+            <div class="videogame-container">
                 <div class="row">
                 </div>
             </div>
         </div>
-
+        <div class="cucina" style="padding-top:20px">
+            <div class="write"><h3>CUCINA</h3></div>
+            <div class="cucina-container">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+        <div class="sport" style="padding-top:20px">
+            <div class="write"><h3>SPORT</h3></div>
+            <div class="sport-container">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="musica" style="padding-top:20px">
+            <div class="write"><h3>MUSICA</h3></div>
+            <div class="musica-container">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="anime" style="padding-top:20px">
+            <div class="write"><h3>ANIME</h3></div>
+            <div class="anime-container">
+                <div class="row">
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -100,58 +92,148 @@ if(isset($_SESSION['username'])){
         
         var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
 
-        inserisciuser(data);
-
         console.log(data["user"]);
+        console.log(data["user"][0]["titolo"]);
 
+
+        inserisciuser(data);
+        inseriscigame(data);
+        inseriscicucina(data);
+        inseriscisport(data);
+        inseriscimusica(data);
+        inseriscianime(data);
     });   
 
     //funzione che mi permette di inserire i dati nei videotitle
     function inserisciuser(data){
+        if(data["user"] !== undefined){
         if(data["user"].length > 0)
         {
             var i=0;
-            var z=0;
+            const z=0;
             var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
             while(i<data["user"].length && i<7){
-                document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["video_title"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-4'>"+data["user"][i]["views"]+"</div><div class='col-4'>"+data["user"][i]["likes"]+"</div><div class='col-4'>"+data["user"][i]["dislikes"]+"</div></div></div></div></div></div>";
+                document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
                 i++;
-                if(i>3){
-                    z++;
-                }
             }
         }
         else{
-            document.getElementsByClassName("video-user-container").innerHTML = "<p>Non hai caricato alcun video</p>";
+            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
         }
     }
+    else{
+            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+    }
+}
 
     function inseriscigame(data){
-        if(data["user"].length > 0)
-        {
-            var i=0;
-            var z=0;
-            var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
-            while(i<data["user"].length && i<7){
-                document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["video_title"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-4'>"+data["user"][i]["views"]+"</div><div class='col-4'>"+data["user"][i]["likes"]+"</div><div class='col-4'>"+data["user"][i]["dislikes"]+"</div></div></div></div></div></div>";
-                i++;
-                if(i>3){
-                    z++;
+        if(data["videogiochi"] !== undefined){
+            if(data["videogiochi"].length > 0)
+            {
+                var i=0;
+                const z=1;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["videogiochi"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["videogame"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["videogame"][i]["username"]+"/"+data["videogame"][i]["video_id"]+"/"+"miniatura"+data["videogame"][i]["video_id"]+".jpg' alt='"+data["videogame"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogame"][i]["video_title"]+"</h5><div>"+data["videogame"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
                 }
+            }   
+            else{
+                document.getElementsByClassName("videogame-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
             }
-        }
+        }  
         else{
-            document.getElementsByClassName("video-user-container").innerHTML = "<p>Non hai caricato alcun video</p>";
+            document.getElementsByClassName("videogame-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
         }
     }
 
-    function titolo(titolo){
-        
-        for(var a=1;a<5; a++){
-        document.getElementById("titolo"+a).innerHTML = "sess"; //+2
-        document.getElementById("link1").getAttribute("href")= "18";
+    function inseriscicucina(data){
+        if(data["cucina"] !== undefined){
+            if(data["cucina"].length > 0)
+            {
+                var i=0;
+                const z=2;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["cucina"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["cucina"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["cucina"][i]["username"]+"/"+data["cucina"][i]["video_id"]+"/"+"miniatura"+data["cucina"][i]["video_id"]+".jpg' alt='"+data["cucina"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["cucina"][i]["video_title"]+"</h5><div>"+data["cucina"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }   
+            else{
+                document.getElementsByClassName("cucina-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            }
+        }  
+        else{
+            document.getElementsByClassName("cucina-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
         }
-    };
+
+    }
+
+    function inseriscisport(data){
+        if(data["sport"] !== undefined){
+            if(data["sport"].length > 0)
+            {
+                var i=0;
+                const z=3;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["sport"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["sport"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["sport"][i]["username"]+"/"+data["sport"][i]["video_id"]+"/"+"miniatura"+data["sport"][i]["video_id"]+".jpg' alt='"+data["sport"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["sport"][i]["video_title"]+"</h5><div>"+data["sport"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }   
+            else{
+                document.getElementsByClassName("sport-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            }
+        }  
+        else{
+            document.getElementsByClassName("sport-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+        }
+
+    }
+
+    function inseriscimusica(data){
+        if(data["musica"] !== undefined){
+            if(data["musica"].length > 0)
+            {
+                var i=0;
+                const z=4;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["musica"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["musica"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["musica"][i]["username"]+"/"+data["musica"][i]["video_id"]+"/"+"miniatura"+data["musica"][i]["video_id"]+".jpg' alt='"+data["musica"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["musica"][i]["video_title"]+"</h5><div>"+data["musica"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }   
+            else{
+                document.getElementsByClassName("musica-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            }
+        }  
+        else{
+            document.getElementsByClassName("musica-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+        }
+
+    }
+
+    function inseriscianime(data){
+        if(data["anime"] !== undefined){
+            if(data["anime"].length > 0)
+            {
+                var i=0;
+                const z=5;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["anime"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["anime"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["anime"][i]["username"]+"/"+data["anime"][i]["video_id"]+"/"+"miniatura"+data["anime"][i]["video_id"]+".jpg' alt='"+data["anime"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["anime"][i]["video_title"]+"</h5><div>"+data["anime"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }   
+            else{
+                document.getElementsByClassName("anime-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            }
+        }  
+        else{
+            document.getElementsByClassName("anime-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+        }
+
+    }
     </script>
     </body>
 </html>

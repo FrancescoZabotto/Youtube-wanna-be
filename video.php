@@ -1,5 +1,7 @@
 <?php
 require "base.php";
+require "navabar.php";
+
 $actual_link ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $videoid = NULL;
 for($i=24; $i<strlen($_SERVER['REQUEST_URI']); $i++){
@@ -46,12 +48,14 @@ $result = $conn->query($sql1);
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./css/video.css">
+<link rel="stylesheet" href="./css/video.css?v='<?php echo $version; ?>'">
 </head>
 <body>
-<div class="video-c"> <!--stai attento al paddding con il cell-->
+
+<div class="video-c" > <!--stai attento al paddding con il cell-->
+    <div class="container">
     <div class="row">
-        <div class="video-container">
+        <div class="video-container col-12">
             <video id="myVideo" class="video" controls>
                 <source src="<?php echo $actual_link; ?>" type="video/mp4">
                 Your browser does not support HTML5 video.
@@ -60,15 +64,15 @@ $result = $conn->query($sql1);
         <div class="video-info">
             <h2><?php echo $titolo; ?></h2>
             <div class="row">
-                <div class="col-sm-6">views</div>
-                <div class="col-sm-3">like</div>
-                <div class="col-sm-3">dislike</div>
+                <div class="col-6">views</div>
+                <div class="col-3">like</div>
+                <div class="col-3">dislike</div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-6">Canale</div>
-                <div class="col-sm-3">iscritti</div>
-                <div class="col-sm-3">subscribe</div>
+                <div class="col-6">Canale</div>
+                <div class="col-3">iscritti</div>
+                <div class="col-3">subscribe</div>
             </div>
             <hr>
             <p><?php echo $descrizione; ?></p>
@@ -77,7 +81,7 @@ $result = $conn->query($sql1);
         </div>
     </div>
 </div>
-    
+</div>
 
     <script>
         var video = document.getElementById("myVideo");

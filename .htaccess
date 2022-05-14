@@ -12,6 +12,9 @@ RewriteRule ^register$ register.php  [L]
 RewriteRule ^logout$ logout.php  [L]
 RewriteRule ^uploadvideo$ uploadvideo.php  [L]
 RewriteRule ^canale$ canale.php  [L]
+RewriteRule ^video\.php\?video=[0-9]{1,64}$ video.php  [L]
+RewriteRule ^canaleuser\?(.)+$ canaleuser.php  [L]
+RewriteRule ^search$ search.php  [L]
 
-RewriteRule ^ index.php [L]
+RewriteRule ^index.php [L]
 </IfModule>

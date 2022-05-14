@@ -1,5 +1,6 @@
 <?php
 require "base.php";
+require "navabar.php";
 $version = time(); 
 if(isset( $_SESSION['username'])){
     $username = $_SESSION['username'];
@@ -62,10 +63,12 @@ else
     <link rel="stylesheet" href="./css/canale.css?v=<?php echo $version?>">
 </head> 
 <body>
+
+
     <div class="canale-container" style="padding-left:3%;padding-right:3%">
         <h1 style="padding-top:10px;">Benvenuto <?php echo ucwords($shortu); ?></h1>
         <br>
-        <h4><a href="canalestandard.php" style="color:#f26964;">VAI AL TUO CANALE</a></h4>
+        <h4><a href="canaleuser?username=<?php echo $_SESSION['username'];?>" style="color:#f26964;">VAI AL TUO CANALE</a></h4>
         <hr>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3"><h5>ISCRITTI</h5></div>
