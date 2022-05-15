@@ -26,7 +26,9 @@ $likes = null;
 $dislikes = null;
 $descrizione = null;
 
-$sql1 = "SELECT * FROM video WHERE video_id='$videoid'";
+$sql1 = "SELECT * FROM video
+        INNER JOIN canale USING(username) 
+        WHERE video_id='$videoid'";
 $result = $conn->query($sql1);
     if($result->num_rows != 0){
         $row = $result->fetch_assoc();
@@ -37,13 +39,17 @@ $result = $conn->query($sql1);
         $dislikes = $row['dislikes'];
         $likes = $row['likes'];
         $descrizione = $row['descrizione'];
+        $iscritti= $row['subscibes']; /*da modificare in meglio*/ 
     }
     else{
         echo "errore";
         header("Location: home");
     }
-
     $actual_link="./video/".$username."/".$videoid."/"."video".$videoid.".mp4";
+
+    if(isset($_SESSION['username']))
+    { $link="iscrizioni.php";}
+    else{$link="login";}
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,15 +70,15 @@ $result = $conn->query($sql1);
         <div class="video-info">
             <h2><?php echo $titolo; ?></h2>
             <div class="row">
-                <div class="col-6">views</div>
-                <div class="col-3">like</div>
-                <div class="col-3">dislike</div>
+                <div class="col-6"><?php echo $videoview; ?></div>
+                <div class="col-3"><?php echo $likes; ?></div>
+                <div class="col-3"><?php echo $dislikes; ?></div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-6">Canale</div>
-                <div class="col-3">iscritti</div>
-                <div class="col-3">subscribe</div>
+                <div class="col-6"><?php echo "<a href='canaleuser.php?username=".$username."'>".ucwords($username)."</a>";?></div>
+                <div class="col-3"><?php echo $iscritti; ?></div>
+                <div class="col-3"><?php echo "<form method='post' action='".$link."'><button type='submit' class='btn btn-danger' >Iscriviti</button>" ?></div>
             </div>
             <hr>
             <p><?php echo $descrizione; ?></p>

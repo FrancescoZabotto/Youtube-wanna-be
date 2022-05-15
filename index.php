@@ -4,18 +4,6 @@ require "navabar.php";
 if(isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $conn = new mysqli("localhost", "root", "", "ProjectFinale");
-    $shortu="";
-    
-    if(strlen($username)>10){
-    for($i=0;$i<10;$i++){
-        $shortu=$shortu.$username[$i];
-    }
-    }
-    else{
-        $shortu=$username;
-    }
-
-    $_SESSION['usernameshort']=$shortu;
 
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
@@ -93,7 +81,7 @@ if(isset($_SESSION['username'])){
         var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
 
         console.log(data["user"]);
-        console.log(data["user"][0]["titolo"]);
+        console.log(data);
 
 
         inserisciuser(data);
@@ -106,7 +94,7 @@ if(isset($_SESSION['username'])){
 
     //funzione che mi permette di inserire i dati nei videotitle
     function inserisciuser(data){
-        if(data["user"] !== undefined){
+        if(data["user"] !== undefined || data.length <= 0){
         if(data["user"].length > 0)
         {
             var i=0;
@@ -118,16 +106,16 @@ if(isset($_SESSION['username'])){
             }
         }
         else{
-            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
         }
     }
     else{
-            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ti sei ancora registrato</div>';
     }
 }
 
     function inseriscigame(data){
-        if(data["videogiochi"] !== undefined){
+        if(data["videogiochi"] != undefined && data.length <= 0){
             if(data["videogiochi"].length > 0)
             {
                 var i=0;

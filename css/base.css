@@ -16,7 +16,10 @@ body{
 
 a{
     text-decoration: none;
-    color: #5a5a5a;
+    color: black;
+}
+a:hover{
+    color:blue;
 }
 img{
     cursor: pointer;

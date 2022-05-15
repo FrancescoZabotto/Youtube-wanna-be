@@ -68,7 +68,7 @@ else
     <div class="canale-container" style="padding-left:3%;padding-right:3%">
         <h1 style="padding-top:10px;">Benvenuto <?php echo ucwords($shortu); ?></h1>
         <br>
-        <h4><a href="canaleuser?username=<?php echo $_SESSION['username'];?>" style="color:#f26964;">VAI AL TUO CANALE</a></h4>
+        <h4><a href="canaleuser.php?username=<?php echo $_SESSION['username'];?>" style="color:#f26964;">VAI AL TUO CANALE</a></h4>
         <hr>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3"><h5>ISCRITTI</h5></div>
@@ -86,7 +86,7 @@ else
         <hr>
         <div><h4 class="subt">LE TUE ISCRIZIONI</h4></div>
         <br>
-        <ul>
+        <!-- <ul>
             <li>AA</li>
             <li>AA</li>
             <li>AA</li>
@@ -94,7 +94,7 @@ else
             <li>AA</li>
             <li></li>
             <li></li>
-        </ul> 
+        </ul>  -->
     </div>   
 
     <footer>
