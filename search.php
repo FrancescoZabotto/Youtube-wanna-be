@@ -102,7 +102,7 @@ else
                     echo "<div class='row' style='padding:30px'>";
                     echo "<div class='col-12'>";
                     echo '<div class="card">
-                            <a href="canaleuser?username='.$TOT[$i]["username"].'"
+                            <a href="canaleuser.php?username='.$TOT[$i]["username"].'"
                                 <div>
                                     <h4>'. $TOT[$i]["username"] .'</h4>
                                 </div>

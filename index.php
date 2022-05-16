@@ -94,9 +94,9 @@ if(isset($_SESSION['username'])){
 
     //funzione che mi permette di inserire i dati nei videotitle
     function inserisciuser(data){
-        if(data["user"] !== undefined || data.length <= 0){
-        if(data["user"].length > 0)
-        {
+        if(data["user"] !== undefined){
+            console.log("sono dentro");
+        if(data["user"].length > 0){
             var i=0;
             const z=0;
             var espressione = new RegExp('^(jpg|jpeg|png|gif)$');

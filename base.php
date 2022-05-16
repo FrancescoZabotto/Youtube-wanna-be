@@ -19,4 +19,28 @@ echo '
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>';
  
+function cercatore($username,$canale){
+    $risultiamo="";
+
+    $conn = new mysqli("localhost", "root", "", "ProjectFinale");
+    if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql1 = "SELECT * FROM iscrizioni_persona WHERE iscrivente='$username' AND canaleuser='$canale'" ; 
+
+    $result = $conn->query($sql1);
+    if($result->num_rows == 0){
+        $row = $result->fetch_assoc();
+        $sql = "INSERT INTO iscrizioni_persona (iscrivente,canaleuser) VALUES ('$username','$canale')";
+        if($conn->query($sql) === TRUE){
+            $risultiamo= "OK";
+        }
+        else{
+            $risultiamo= "NOT OK";
+        }
+    }
+
+    echo $risultiamo;
+}
 ?>

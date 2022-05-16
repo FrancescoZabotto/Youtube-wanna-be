@@ -10,6 +10,11 @@ if(preg_match($exp, $actual_link, $match))
     $userchannel=$match[0];
     preg_match("/[\w]{1,32}$/", $userchannel, $match2);
     $userchannel=$match2[0];
+    $_SESSION["possbileiscrizione"]=$userchannel;
+    if(isset($_SESSION['username']))
+    {
+        
+    }
 } 
 else 
 {
@@ -23,7 +28,7 @@ else
 <body>
 
     <div class="user title" style="padding-top:10px;text-align:center">
-        <?php echo "<h1 style='font-weight:700;'>".ucwords($shortu)."'s Channel</h1>"?>
+        <?php echo "<h1 style='font-weight:700;'>".ucwords($userchannel)."'s Channel</h1>"?>
     </div>
     <div class="container"> 
         <div class="row">
@@ -32,15 +37,9 @@ else
     </div>
     <script>
 
-        const data = { username: '<?php echo $userchannel; ?>' };
 
-        var data = new FormData();
-        data.append( "json", JSON.stringify( data ) );
-        var Dativideo;
         var req = new XMLHttpRequest(); 
         fetch("viedouser.php",{
-            method: "POST",
-            body: data
         }).then((response) => {
             return response.json();
         }).then((json) => {

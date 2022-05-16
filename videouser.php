@@ -1,31 +1,32 @@
 <?php
-if(isset($_POST)){
-$Dativideo = array();
+if(isset($_SESSION["possbileiscrizione"]) && isset($_SESSION["username"])){
+
+    $risultiamo="";
 
 $conn = new mysqli("localhost", "root", "", "ProjectFinale");
 if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-
-//prendi i video dei canali a cui si è registrato
 $username = $_SESSION['username'];
-$sql1 = "SELECT video_id,username,titolo,videoview,datains FROM video
-WHERE username = '$username'
-ORDER BY video.datains DESC LIMIT 8";
-$result = $conn->query($sql1);
-if($result->num_rows != 0){
-    $TOT=array();
-while($row = $result->fetch_assoc()){
-        $TOT[] = $row;
-}   
-    $Dativideo['user'] = $TOT;
+$canale=$_SESSION['possbileiscrizione'];
+$sql1 = "SELECT * FROM iscrizioni_persona WHERE iscrivente='$username' AND canaleuser='$canale'" ; //inserisco le sue iscrizioni sulla session?no
+
+$result = $conn->query($sql1); //base.php prendi cercatore
+if($result->num_rows == 0){
+    $row = $result->fetch_assoc();
+    $sql = "INSERT INTO iscrizioni_persona (iscrivente,canaleuser) VALUES ('$username','$canale')";
+    if($conn->query($sql) === TRUE){
+        $risultiamo= "OK";
+    }
+    else{
+        $risultiamo= "NOT OK";
+    }
 }
 
-$JSON = json_encode($Dativideo);
+$JSON = json_encode($risultiamo);
 
-echo $JSON;
+echo $risultiamo;
 }
 
 ?>
