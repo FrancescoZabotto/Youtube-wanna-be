@@ -14,7 +14,8 @@ if(isset($_SESSION['username'])){
 
     //per il fatto di chiaro o scuro, o fai con la session oppure fai 2 file css chiaro e scuro e ti adatti a mostrare in base all'impostazione
     
-    /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/ 
+    /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/
+    //https://codepen.io/lazehang/pen/YzYXwjE 
     //ho cambiato un po di titoli
 ?>
 <!DOCTYPE html>
@@ -82,7 +83,7 @@ if(isset($_SESSION['username'])){
 
         console.log(data["user"]);
         console.log(data);
-
+        console.log(document.getElementsByClassName("video-user-container"));
 
         inserisciuser(data);
         inseriscigame(data);
@@ -96,22 +97,22 @@ if(isset($_SESSION['username'])){
     function inserisciuser(data){
         if(data["user"] !== undefined){
             console.log("sono dentro");
-        if(data["user"].length > 0){
-            var i=0;
-            const z=0;
-            var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
-            while(i<data["user"].length && i<7){
-                document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
-                i++;
+            if(data["user"].length > 0){
+                var i=0;
+                const z=0;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data["user"].length && i<7){
+                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }
+            else{
+                document.getElementsByClassName("video-user-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
             }
         }
         else{
-            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
+            document.getElementsByClassName("video-user-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
         }
-    }
-    else{
-            document.getElementsByClassName("video-user-container").innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ti sei ancora registrato</div>';
-    }
 }
 
     function inseriscigame(data){

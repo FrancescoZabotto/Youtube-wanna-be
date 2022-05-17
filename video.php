@@ -26,6 +26,11 @@ $likes = null;
 $dislikes = null;
 $descrizione = null;
 
+$sql13="UPDATE video
+SET videoview = videoview+1
+WHERE video_id = '$videoid';";
+$conn->query($sql13);
+
 $sql1 = "SELECT * FROM video
         INNER JOIN canale USING(username) 
         WHERE video_id='$videoid'";
@@ -39,7 +44,7 @@ $result = $conn->query($sql1);
         $dislikes = $row['dislikes'];
         $likes = $row['likes'];
         $descrizione = $row['descrizione'];
-        $iscritti= $row['subscribes']; /*da modificare in meglio*/ 
+        $iscritti= $row['subscibes']; /*da modificare in meglio*/ 
     }
     else{
         echo "errore";
@@ -50,6 +55,8 @@ $result = $conn->query($sql1);
     if(isset($_SESSION['username']))
     { $link="iscrizioni.php";}
     else{$link="login";}
+
+
 ?>
 <!DOCTYPE html>
 <html>

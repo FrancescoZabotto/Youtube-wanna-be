@@ -4,14 +4,6 @@ require "navabar.php";
 $version = time(); 
 if(isset( $_SESSION['username'])){
     $username = $_SESSION['username'];
-    if(strlen($username)>10){
-        for($i=0;$i<25;$i++){
-            $shortu=$shortu.$username[$i];
-        }
-        }
-        else{
-            $shortu=$username;
-        }
 
     $username = $_SESSION['username'];
     $conn = new mysqli("localhost", "root", "", "ProjectFinale");
@@ -40,14 +32,16 @@ if(isset( $_SESSION['username'])){
     $result = $conn->query($sql1);
     if($result->num_rows > 0){
         $row = $result->fetch_assoc();
-        $totview=$row['totview'];
-        $likes=$row['likes'];
-        $dislikes=$row['dislikes'];
+        if($row!=null && $row['totview']!=null){
+            $totview=$row['totview'];
+            $likes=$row['likes'];
+            $dislikes=$row['dislikes'];
+        }
     }
     else{ 
-        $iscritti="ERRORE"; 
-        $likes="ERRORE";
-        $dislikes="ERRORE";
+        $totview="0"; 
+        $likes="0";
+        $dislikes="0";
     }
 
 
@@ -66,7 +60,7 @@ else
 
 
     <div class="canale-container" style="padding-left:3%;padding-right:3%">
-        <h1 style="padding-top:10px;">Benvenuto <?php echo ucwords($shortu); ?></h1>
+        <h1 style="padding-top:10px;">Benvenuto <?php echo ucwords($username); ?></h1>
         <br>
         <h4><a href="canaleuser.php?username=<?php echo $_SESSION['username'];?>" style="color:#f26964;">VAI AL TUO CANALE</a></h4>
         <hr>
@@ -84,7 +78,7 @@ else
             <div class="col-12 col-md-6 col-lg-3"><?php echo "<h5>".$dislikes."</h5>"; ?></div>
         </div>
         <hr>
-        <div><h4 class="subt">LE TUE ISCRIZIONI</h4></div>
+        <div><h4 class="subt">...</h4></div>
         <br>
         <!-- <ul>
             <li>AA</li>
@@ -101,7 +95,7 @@ else
         <h4><a href="unset.php" style="color:#f26964;">unset</a></h4>
     </footer>
     <script>
-        document.addEventListener("touchstart", function(){}, true);
+       // document.addEventListener("touchstart", function(){}, true);
     </script>
 </body>
 </html>

@@ -6,6 +6,7 @@ if(isset( $_SESSION['username'])){
 else{
     header("Location: login");
 }
+//https://codepen.io/creativekinetix/pen/pydLyx
 ?>
 <html>
     <head>
@@ -19,6 +20,14 @@ else{
             <h1 style="color:#f26964">Inserisci Video</h1>
             <input type="text" name="titolo" placeholder="Titolo" required>
             <textarea class="form-control" rows="10" cols="500"type="text" name="descrizione" placeholder="Descrizione" style="height: 200px;resize: none;" required></textarea>
+            <select data-placeholder="Sceglie le categorie" name="tags[]" multiple class="chosen-select">
+                <option value="Videogiochi">Videogiochi</option>
+                <option value="Carpentry">Carpentry</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electical">Electrical</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="HVAC">HVAC</option>
+            </select>
             <label for="miniatura">Inserisci Miniatura</label>
             <input type="file" name="miniatura" required>
             <label for="video">Inserisci Video</label>

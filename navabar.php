@@ -1,6 +1,7 @@
 <?php
 if(isset($_SESSION['username'])){
     $username=$_SESSION['username'];
+    $shortu="";
     if(strlen($username)>10){
         for($i=0;$i<10;$i++){
             $shortu=$shortu.$username[$i];
@@ -26,7 +27,7 @@ echo '<header>
     </div>  
     <div class="nav-right flex-div">   
         <a href="uploadvideo"><img src="static/add.png"></a>
-        <a href="canale" style="font-weight:600;">'.$shortu.'</a>    
+        <a href="canale" style="font-weight:600;">'.$shortu.'...</a>    
     </div>   
     </nav>
     </header>';
