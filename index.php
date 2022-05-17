@@ -24,11 +24,7 @@ if(isset($_SESSION['username'])){
 
     <div class="container" style="padding-top:20px"> <!--stai attento al paddding con il cell-->
         <div class="user">
-            <?php if(isset($username)){echo '<div class="write"><h3>USER</h3></div>'; } ?>
-            <div class="video-user-container">
-                <div class="row">
-                </div>
-            </div>
+            <?php if(isset($username)){echo '<div class="write"><h3>USER</h3></div><div class="video-user-container"><div class="row"></div></div>'; } ?>
         </div>
         <div class="videogame" style="padding-top:20px">
             <div class="write"><h3>VIDEOGAME</h3></div>
@@ -85,12 +81,13 @@ if(isset($_SESSION['username'])){
         console.log(data);
         console.log(document.getElementsByClassName("video-user-container"));
 
-        inserisciuser(data);
         inseriscigame(data);
         inseriscicucina(data);
         inseriscisport(data);
         inseriscimusica(data);
         inseriscianime(data);
+        inserisciuser(data);
+
     });   
 
     //funzione che mi permette di inserire i dati nei videotitle

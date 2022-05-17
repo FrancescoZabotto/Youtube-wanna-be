@@ -44,7 +44,7 @@ $result = $conn->query($sql1);
         $dislikes = $row['dislikes'];
         $likes = $row['likes'];
         $descrizione = $row['descrizione'];
-        $iscritti= $row['subscibes']; /*da modificare in meglio*/ 
+        $iscritti= $row['subscribes']; /*da modificare in meglio*/ 
     }
     else{
         echo "errore";

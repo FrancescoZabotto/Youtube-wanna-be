@@ -10,7 +10,7 @@ if(preg_match($exp, $actual_link, $match))
     $userchannel=$match[0];
     preg_match("/[\w]{1,32}$/", $userchannel, $match2);
     $userchannel=$match2[0];
-    $_SESSION["possbileiscrizione"]=$userchannel;
+    $_SESSION["personacanale"]=$userchannel;
     if(isset($_SESSION['username']))
     {
         
@@ -19,7 +19,8 @@ if(preg_match($exp, $actual_link, $match))
 else 
 {
   echo "Errore";
-  header("Location: home");}
+  header("Location: home");
+}
 
 ?>
 
@@ -36,22 +37,37 @@ else
         </div>
     </div>
     <script>
-
-
         var req = new XMLHttpRequest(); 
-        fetch("viedouser.php",{
+        fetch("videouser.php",{
         }).then((response) => {
             return response.json();
-        }).then((json) => {
-            console.log(json)
-        }).then((data) => {
-            
-            console.log(data);
-            
-            //inserisciuser(data);
+        }).then((data) => {   
+            console.log(data.length);
+            console.log(data[0]);
+            inseriscitizio(data);
         }).catch((error) => {
             console.log(error);
-        });   
+        }); 
+        
+        function inseriscitizio(data){
+        if(data != undefined){
+            if(data.length > 0)
+            {
+                var i=0;
+                var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
+                while(i<data.length){
+                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data[i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data[i]["username"]+"/"+data[i]["video_id"]+"/"+"miniatura"+data[i]["video_id"]+".jpg' alt='"+data[i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data[i]["titolo"]+"</h5><div>"+data[i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data[i]["videoview"]+"</div></div></div></div></div></div>";
+                    i++;
+                }
+            }   
+            else{
+                document.getElementsByClassName("container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+            }
+        }  
+        else{
+            document.getElementsByClassName("container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non ci sono video</div>';
+        }
+    }
     </script>
 </body>
 </html>

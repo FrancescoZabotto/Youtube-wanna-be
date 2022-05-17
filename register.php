@@ -62,7 +62,7 @@ if(isset( $_POST['username']) && isset($_POST['password']) && isset($_POST['conf
                 echo "Registrazione avvenuta con successo";
                 $_SESSION['username'] = $username;
                 mkdir("video/".$username);
-                $sql="INSERT INTO `canale` (`username`, `total_views`, `total_likes`, `total_dislikes`, `subscibes`) VALUES ('$username', '0', '0', '0', '1');";
+                $sql="INSERT INTO `canale` (`username`, `total_views`, `total_likes`, `total_dislikes`, `subscribes`) VALUES ('$username', '0', '0', '0', '1');";
                 $conn->query($sql);
                 header("Location: home");
             }
