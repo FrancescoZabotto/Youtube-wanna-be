@@ -11,6 +11,7 @@ if(isset( $_SESSION['username'])){
     </head>
     <body>
     <div class="login-container">
+        <div class="mesaaggi-errore"></div>
         <div class="login-form">
         <form method="post">
             <h1 style="color:#f26964">LOGIN</h1>

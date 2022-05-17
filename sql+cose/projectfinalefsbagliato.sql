@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 08, 2022 alle 21:50
+-- Creato il: Mag 17, 2022 alle 19:00
 -- Versione del server: 10.4.21-MariaDB
 -- Versione PHP: 8.0.12
 
@@ -28,13 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `canale` (
-  `username` char(32) NOT NULL,
-  `subscribes` int(32) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `total_views` int(32) NOT NULL DEFAULT 0,
+  `total_likes` int(32) NOT NULL DEFAULT 0,
+  `total_dislikes` int(32) NOT NULL DEFAULT 0,
+  `subscibes` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `canale`
 --
+
+INSERT INTO `canale` (`username`, `total_views`, `total_likes`, `total_dislikes`, `subscibes`) VALUES
+('A', 0, 0, 0, 0),
+('B', 0, 0, 0, 0),
+('zabo', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -64,8 +72,9 @@ CREATE TABLE `categorie_video` (
 --
 
 CREATE TABLE `impostazioni` (
-  `username`  char(32) NOT NULL NOT NULL,
-  `nomeimpostazione` varchar(32) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `nomeimpostazione` varchar(32) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -75,13 +84,20 @@ CREATE TABLE `impostazioni` (
 --
 
 CREATE TABLE `iscrizioni_persona` (
-  `iscrivente` char(32) NOT NULL,
-  `canaleuser` char(32) NOT NULL
+  `iscrivente` varchar(255) NOT NULL,
+  `canaleuser` varchar(255) NOT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `iscrizioni_persona`
 --
+
+INSERT INTO `iscrizioni_persona` (`iscrivente`, `canaleuser`, `isactive`) VALUES
+('A', 'B', 1),
+('zabo', 'A', 1),
+('zabo', 'B', 1),
+('zabo', 'zabo', 1);
 
 -- --------------------------------------------------------
 
@@ -93,13 +109,19 @@ CREATE TABLE `utenti` (
   `email` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `cognome` varchar(255) NOT NULL,
-  `username` char(32) NOT NULL,
-  `password` char(32) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
+
+INSERT INTO `utenti` (`email`, `nome`, `cognome`, `username`, `password`) VALUES
+('A', 'A', 'A', 'A', 'A'),
+('a@a.com', 'Yari', 'Zbotto', 'YZ', '6e6bc4e49dd477ebc98ef4046c067b5f'),
+('B', 'B', 'B', 'B', 'B'),
+('francescus03@gmail.com', 'francesco', 'zabotto', 'zabo', 'd155f675a9487811096dc87597426f8e');
 
 -- --------------------------------------------------------
 
@@ -109,12 +131,12 @@ CREATE TABLE `utenti` (
 
 CREATE TABLE `video` (
   `video_id` int(64) NOT NULL,
-  `username` char(32) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `likes` int(8) NOT NULL DEFAULT 0,
   `dislikes` int(8) NOT NULL DEFAULT 0,
   `videoview` int(12) NOT NULL DEFAULT 0,
   `datains` datetime NOT NULL,
-  `descrizione` text NULL,
+  `descrizione` text DEFAULT NULL,
   `titolo` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -122,8 +144,10 @@ CREATE TABLE `video` (
 -- Dump dei dati per la tabella `video`
 --
 
-INSERT INTO `categorie` (`categorie`) VALUES ('Videogiochi'), ('Anime'), ('Musica'), ('Cucina'), ('Sport'); 
---aggiunto di mio pugno
+INSERT INTO `video` (`video_id`, `username`, `likes`, `dislikes`, `videoview`, `datains`, `descrizione`, `titolo`) VALUES
+(81, 'zabo', 0, 0, 1, '2022-05-05 17:28:07', 'GAY', 'SESSO'),
+(89, 'zabo', 0, 0, 0, '2022-05-15 20:24:34', 'CI SIAMO?', 'ALLORA');
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -182,7 +206,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT per la tabella `video`
 --
 ALTER TABLE `video`
-  MODIFY `video_id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `video_id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- Limiti per le tabelle scaricate

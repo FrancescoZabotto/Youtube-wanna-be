@@ -10,6 +10,7 @@ $version = time();
         </head>
     <div class="login-container">
         <div class="login-form">
+        <div class="mesaaggi-errore"></div>
         <form method="post" class="row" style="width:650px;">
             <h1 class="col-12" style="color:#f26964">Registrazione</h1>
             <input class="col-12 col-md-6" type="text"  id="name" name="nome" placeholder="Nome" required>
@@ -62,7 +63,9 @@ if(isset( $_POST['username']) && isset($_POST['password']) && isset($_POST['conf
                 echo "Registrazione avvenuta con successo";
                 $_SESSION['username'] = $username;
                 mkdir("video/".$username);
-                $sql="INSERT INTO `canale` (`username`, `total_views`, `total_likes`, `total_dislikes`, `subscribes`) VALUES ('$username', '0', '0', '0', '1');";
+                $sql="INSERT INTO `canale` (`username`, `subscribes`) VALUES ('$username', '1');";
+                $conn->query($sql);
+                $sql="INSERT INTO `iscrizioni_persona` (`iscrivente`, `canaleuser`) VALUES ('$username', '$username')";//si autoiscrive a se stesso
                 $conn->query($sql);
                 header("Location: home");
             }

@@ -40,7 +40,8 @@ select,
 button, 
 input[type="submit"],
 input[type="radio"], 
-input[type="checkbox"] 
+input[type="checkbox"],
+input[type="text"],
 input[type="button"] {
     cursor: pointer;
 }
@@ -108,7 +109,7 @@ span {
   font-weight:200;
 }
 
-input, textarea, .form-control{
+input, textarea, .form-control, select{
   width:100%;
   background:#f5f5f5;
   border:0;

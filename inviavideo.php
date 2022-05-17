@@ -21,14 +21,14 @@ if(isset($_SESSION['username'])){
     while($row = $result->fetch_assoc()){
             $TOT[] = $row;
     }   
-        $Dativideo['user'] = $TOT;
     }
+    $Dativideo['user'] = $TOT;
 }
 
 //$sql2 = "SELECT * FROM video WHERE video.idvideo NOT IN (SELECT video.idvideo FROM video INNER JOIN iscrizioni_persona ON iscrizionipersona.idvideo=video.idvideo WHERE iscrizionipersona.username='$username')";
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
-WHERE categorie_video.categorie='videogiochi'
+WHERE categorie_video.categorie='Videogiochi'
 ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
@@ -41,60 +41,52 @@ if($result->num_rows != 0){
 
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
-WHERE categorie_video.categorie='cucina'
+WHERE categorie_video.categorie='Cucina'
 ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
-    $n=1;
     while($row = $result->fetch_assoc()){
-        $TOT[$n] = $row;
-        $n++;
+        $TOT[] = $row;
     }
     $Dativideo['cucina'] = $TOT;
 }
 
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
-WHERE categorie_video.categorie='sport'
+WHERE categorie_video.categorie='Sport'
 ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
-    $n=1;
     while($row = $result->fetch_assoc()){
-        $TOT[$n] = $row;
-        $n++;
+        $TOT[] = $row;
     }
     $Dativideo['sport'] = $TOT;
 }
 
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
-WHERE categorie_video.categorie='musica'
+WHERE categorie_video.categorie='Musica'
 ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
-    $n=1;
     while($row = $result->fetch_assoc()){
-        $TOT[$n] = $row;
-        $n++;
+        $TOT[] = $row;
     }
     $Dativideo['musica'] = $TOT;
 }
 
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
-WHERE categorie_video.categorie='anime'
+WHERE categorie_video.categorie='Anime'
 ORDER BY video.datains DESC LIMIT 8";
 $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
-    $n=1;
     while($row = $result->fetch_assoc()){
-        $TOT[$n] = $row;
-        $n++;
+        $TOT[] = $row;
     }
     $Dativideo['anime'] = $TOT;
 }

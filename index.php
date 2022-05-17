@@ -24,24 +24,34 @@ if(isset($_SESSION['username'])){
 
     <div class="container" style="padding-top:20px"> <!--stai attento al paddding con il cell-->
         <div class="user">
-            <?php if(isset($username)){echo '<div class="write"><h3>USER</h3></div><div class="video-user-container"><div class="row"></div></div>'; } ?>
+            <?php if(isset($username)){echo '<div class="write"><h3>USER</h3></div>'; } ?>
+        </div>
+        <div class="video-user-container">
+            <div class="row">
+            </div>
         </div>
         <div class="videogame" style="padding-top:20px">
-            <div class="write"><h3>VIDEOGAME</h3></div>
+            <div class="write">
+                <h3>VIDEOGAME</h3>
+            </div>
             <div class="videogame-container">
                 <div class="row">
                 </div>
             </div>
         </div>
         <div class="cucina" style="padding-top:20px">
-            <div class="write"><h3>CUCINA</h3></div>
+            <div class="write">
+                <h3>CUCINA</h3>
+            </div>
             <div class="cucina-container">
                 <div class="row">
                 </div>
             </div>
         </div>
         <div class="sport" style="padding-top:20px">
-            <div class="write"><h3>SPORT</h3></div>
+            <div class="write">
+                <h3>SPORT</h3>
+            </div>
             <div class="sport-container">
                 <div class="row">
                 </div>
@@ -49,7 +59,9 @@ if(isset($_SESSION['username'])){
         </div>
     </div>
     <div class="musica" style="padding-top:20px">
-            <div class="write"><h3>MUSICA</h3></div>
+            <div class="write">
+                <h3>MUSICA</h3>
+            </div>
             <div class="musica-container">
                 <div class="row">
                 </div>
@@ -57,7 +69,9 @@ if(isset($_SESSION['username'])){
         </div>
     </div>
     <div class="anime" style="padding-top:20px">
-            <div class="write"><h3>ANIME</h3></div>
+            <div class="write">
+                <h3>ANIME</h3>
+            </div>
             <div class="anime-container">
                 <div class="row">
                 </div>
@@ -79,7 +93,10 @@ if(isset($_SESSION['username'])){
 
         console.log(data["user"]);
         console.log(data);
-        console.log(document.getElementsByClassName("video-user-container"));
+
+        console.log(data["anime"].length);
+
+        console.log(document.getElementsByClassName("row").length);
 
         inseriscigame(data);
         inseriscicucina(data);
@@ -93,13 +110,12 @@ if(isset($_SESSION['username'])){
     //funzione che mi permette di inserire i dati nei videotitle
     function inserisciuser(data){
         if(data["user"] !== undefined){
-            console.log("sono dentro");
+            
             if(data["user"].length > 0){
                 var i=0;
-                const z=0;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["user"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }
@@ -107,20 +123,16 @@ if(isset($_SESSION['username'])){
                 document.getElementsByClassName("video-user-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
             }
         }
-        else{
-            document.getElementsByClassName("video-user-container")[0].innerHTML = '<div style="padding-top:20px;text-align:center;color:#f26964;font-weight:700;font-size:30px">Non hai inserito alcun video</div>';
-        }
 }
 
     function inseriscigame(data){
-        if(data["videogiochi"] != undefined && data.length <= 0){
+        if(data["videogiochi"] != undefined){
             if(data["videogiochi"].length > 0)
             {
                 var i=0;
-                const z=1;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["videogiochi"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["videogame"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["videogame"][i]["username"]+"/"+data["videogame"][i]["video_id"]+"/"+"miniatura"+data["videogame"][i]["video_id"]+".jpg' alt='"+data["videogame"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogame"][i]["video_title"]+"</h5><div>"+data["videogame"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[1].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["videogiochi"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["videogiochi"][i]["username"]+"/"+data["videogiochi"][i]["video_id"]+"/"+"miniatura"+data["videogiochi"][i]["video_id"]+".jpg' alt='"+data["videogiochi"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogiochi"][i]["titolo"]+"</h5><div>"+data["videogiochi"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["videogiochi"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -138,10 +150,9 @@ if(isset($_SESSION['username'])){
             if(data["cucina"].length > 0)
             {
                 var i=0;
-                const z=2;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["cucina"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["cucina"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["cucina"][i]["username"]+"/"+data["cucina"][i]["video_id"]+"/"+"miniatura"+data["cucina"][i]["video_id"]+".jpg' alt='"+data["cucina"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["cucina"][i]["video_title"]+"</h5><div>"+data["cucina"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[2].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["cucina"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["cucina"][i]["username"]+"/"+data["cucina"][i]["video_id"]+"/"+"miniatura"+data["cucina"][i]["video_id"]+".jpg' alt='"+data["cucina"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["cucina"][i]["titolo"]+"</h5><div>"+data["cucina"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["cucina"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -160,10 +171,9 @@ if(isset($_SESSION['username'])){
             if(data["sport"].length > 0)
             {
                 var i=0;
-                const z=3;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["sport"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["sport"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["sport"][i]["username"]+"/"+data["sport"][i]["video_id"]+"/"+"miniatura"+data["sport"][i]["video_id"]+".jpg' alt='"+data["sport"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["sport"][i]["video_title"]+"</h5><div>"+data["sport"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[3].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["sport"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["sport"][i]["username"]+"/"+data["sport"][i]["video_id"]+"/"+"miniatura"+data["sport"][i]["video_id"]+".jpg' alt='"+data["sport"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["sport"][i]["titolo"]+"</h5><div>"+data["sport"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["sport"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -182,10 +192,9 @@ if(isset($_SESSION['username'])){
             if(data["musica"].length > 0)
             {
                 var i=0;
-                const z=4;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["musica"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["musica"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["musica"][i]["username"]+"/"+data["musica"][i]["video_id"]+"/"+"miniatura"+data["musica"][i]["video_id"]+".jpg' alt='"+data["musica"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["musica"][i]["video_title"]+"</h5><div>"+data["musica"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[4].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["musica"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["musica"][i]["username"]+"/"+data["musica"][i]["video_id"]+"/"+"miniatura"+data["musica"][i]["video_id"]+".jpg' alt='"+data["musica"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["musica"][i]["titolo"]+"</h5><div>"+data["musica"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["musica"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -204,10 +213,9 @@ if(isset($_SESSION['username'])){
             if(data["anime"].length > 0)
             {
                 var i=0;
-                const z=5;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["anime"].length && i<7){
-                    document.getElementsByClassName("row")[z].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["anime"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["anime"][i]["username"]+"/"+data["anime"][i]["video_id"]+"/"+"miniatura"+data["anime"][i]["video_id"]+".jpg' alt='"+data["anime"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["anime"][i]["video_title"]+"</h5><div>"+data["anime"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[5].innerHTML += "<div class='col-12 col-md-6 col-lg-3"+i+"'><a href=video.php?video="+data["anime"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["anime"][i]["username"]+"/"+data["anime"][i]["video_id"]+"/"+"miniatura"+data["anime"][i]["video_id"]+".jpg' alt='"+data["anime"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["anime"][i]["titolo"]+"</h5><div>"+data["anime"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["anime"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
