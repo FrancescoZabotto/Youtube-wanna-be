@@ -19,7 +19,7 @@ else{
         <form action="" method="post" enctype="multipart/form-data" style="width:800px;">
             <h1 style="color:#f26964">Inserisci Video</h1>
             <input type="text" name="titolo" placeholder="Titolo" required>
-            <textarea class="form-control" rows="10" cols="500"type="text" name="descrizione" placeholder="Descrizione" style="height: 200px;resize: none;" required></textarea>
+            <textarea class="form-control" rows="10" cols="500" type="text" name="descrizione" placeholder="Descrizione" style="height: 200px;resize: none;" required></textarea>
             <label for="tag">Scegli le categorie</label>
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="tag">
                 <option value="Videogiochi">Videogiochi</option>
@@ -114,13 +114,13 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
                     $target_video = $target_dir . basename($_FILES["video"]["name"]);
                     $target_imm = $target_dir . basename($_FILES["miniatura"]["name"]);
 
-                    $tag=$_POST['tag'];
-                    $sql2="INSERT INTO `categorie_video` (`categorie`, `video_id`) VALUES ('$tag', '$id')";
-                    $result2 = $conn->query($sql2);
-                    var_dump($result2);
 
                         //upload video
                         if(move_uploaded_file($_FILES["video"]["tmp_name"], $target_video)) {
+                            $tag=$_POST['tag'];
+                            $sql2="INSERT INTO `categorie_video` (`categorie`, `video_id`) VALUES ('$tag', '$id')";
+                            $result2 = $conn->query($sql2);
+                            var_dump($result2);
                             echo "The file ". htmlspecialchars(basename( $_FILES["video"]["name"])). " has been uploaded." . "<br>";
                         } 
                         else{

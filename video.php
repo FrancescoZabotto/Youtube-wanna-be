@@ -2,15 +2,12 @@
 require "base.php";
 require "navabar.php";
 
-$actual_link ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$videoid = NULL;
-for($i=24; $i<strlen($_SERVER['REQUEST_URI']); $i++){
-    if(is_numeric($_SERVER['REQUEST_URI'][$i])){
-    $videoid = $videoid.$_SERVER['REQUEST_URI'][$i];
-    }
-    else{
-        break;
-    }
+if(isset($_GET['video'])){
+    $videoid = $_GET['video'];
+}
+else
+{
+    header("Location: home");
 }
 
 $conn = new mysqli("localhost", "root", "", "ProjectFinale");
