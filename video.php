@@ -41,17 +41,50 @@ $result = $conn->query($sql1);
         $dislikes = $row['dislikes'];
         $likes = $row['likes'];
         $descrizione = $row['descrizione'];
-        $iscritti= $row['subscribes']; /*da modificare in meglio*/ 
     }
     else{
         echo "errore";
         header("Location: home");
     }
+
+    $sql2 = "SELECT COUNT(iscrizioni_persona.iscrivente) AS iscritti FROM iscrizioni_persona
+    WHERE iscrizioni_persona.canaleuser='$username'";
+    $iscritti="0";
+
+    $result = $conn->query($sql2);
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $iscritti=$row['iscritti'];
+    }
+    else{ $iscritti="ERRORE"; }
+    
     $actual_link="./video/".$username."/".$videoid."/"."video".$videoid.".mp4";
 
+    $t="";
+
     if(isset($_SESSION['username']))
-    { $link="iscrizioni.php";}
-    else{$link="login";}
+    { $link="iscrizioni.php";
+      $_SESSION['canaleprincipale']=$username; 
+      
+        $f=$_SESSION['username'];
+
+      $sql3 = "SELECT * FROM `iscrizioni_persona`
+            WHERE iscrivente='$f'
+            AND canaleuser='$username'";
+        $result = $conn->query($sql3);
+
+        if($result->num_rows > 0){
+            $t="<form method='post' action='".$link."'><button type='submit' class='btn btn-outline-danger'>SEI ISCRITTO</button></form>";
+        }
+        else{
+            $t="<form method='post' action='".$link."'><button type='submit' class='btn btn-danger'>ISCRIVITI</button></form>";
+        }   
+    }
+    else{
+        $link="login";
+        $t="<form method='post' action='".$link."'><button type='submit' class='btn btn-danger'>ISCRIVITI</button></form>";
+    }
+
 
 
 ?>
@@ -74,15 +107,15 @@ $result = $conn->query($sql1);
         <div class="video-info">
             <h2><?php echo $titolo; ?></h2>
             <div class="row">
-                <div class="col-6"><?php echo $videoview; ?></div>
-                <div class="col-3"><?php echo $likes; ?></div>
-                <div class="col-3"><?php echo $dislikes; ?></div>
+                <div class="col-6"><?php echo "Views: ".$videoview; ?></div>
+                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-up.svg"  width="23px" height="23px" onclick="like()" fill="currentColor" id=like><div id="count">'.$likes.'</div>'; ?></div>
+                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-down.svg"  width="23px" height="23px" onclick="dislike()" fill="currentColor" id=dislike><div id="countt">'.$dislikes.'</div>'; ?></div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-6"><?php echo "<a href='canaleuser.php?username=".$username."'>".ucwords($username)."</a>";?></div>
                 <div class="col-3"><?php echo $iscritti; ?></div>
-                <div class="col-3"><?php echo "<form method='post' action='".$link."'><button type='submit' class='btn btn-danger' >Iscriviti</button>" ?></div>
+                <div class="col-3"><?php echo $t; ?></div>
             </div>
             <hr>
             <p><?php echo $descrizione; ?></p>
@@ -92,10 +125,61 @@ $result = $conn->query($sql1);
     </div>
 </div>
 </div>
+<div class="relative h-6 w-6">
+        <input type="radio" class="z-10 relative like-button opacity-0 h-full w-full cursor-pointer" name="like" value="like" />
+
+</div>
 
     <script>
         var video = document.getElementById("myVideo");
         video.play();
+
+        function like(){
+            var x = document.getElementById("like");
+            const number=1;
+            var y=x.src;
+            test=0;
+            if(y == "http://localhost/Normal/static/hand-thumbs-up.svg"){
+            x.setAttribute("src","http://localhost/Normal/static/hand-thumbs-up-fill.svg");
+            var count = document.getElementById('count');
+            count.innerHTML = count.innerHTML + number; 
+            count.textContent = number.toString();
+            }
+            else{
+            x.setAttribute("src","http://localhost/Normal/static/hand-thumbs-up.svg");
+            var count = document.getElementById('count');
+            count.innerHTML = count.innerHTML - number;
+            //count.textContent = number.toString();
+            var z = document.getElementById("dislike");
+            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
+            var countt = document.getElementById('countt');
+            if(test=0){countt.innerHTML = countt.innerHTML - number;}else{countt.innerHTML = countt.innerHTML + number;countt.textContent = number.toString();}
+            test++;
+            }
+        }
+
+        function dislike(){
+            var z = document.getElementById("dislike");
+            const number=1;
+            var y=z.src;
+            if(y == "http://localhost/Normal/static/hand-thumbs-down.svg"){
+            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down-fill.svg");
+            var count = document.getElementById('countt');
+            count.innerHTML = count.innerHTML + number; 
+            count.textContent = number.toString();
+            }
+            else{
+            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
+            var count = document.getElementById('countt');
+            count.innerHTML = count.innerHTML - number;
+            }
+        }
+
+        function normaldis(){
+            var z = document.getElementById("dislike");
+            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
+        }
+        
     </script>
 </body>
 </html> 

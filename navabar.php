@@ -23,10 +23,9 @@ echo '<header>
             <button class="btnacc" type="submit"><img  src="./static/search-solid.svg" width="100%" height="100%" fill="currentColor" class="bi bi-search"></button>
         </form>
         </div>  
-        <!-- <img src="static/search.png" class="mic-icon"> -->
     </div>  
     <div class="nav-right flex-div">   
-        <a href="uploadvideo"><img src="static/add.png"></a>
+        <a href="uploadvideo"><img src="./static/plus-circle.svg" width="100%" height="100%" fill="currentColor"></a>
         <a href="canale" style="font-weight:600;">'.$shortu.'...</a>    
     </div>   
     </nav>
@@ -44,11 +43,10 @@ echo '<header>
                 <button class="btnacc" type="submit"><img  src="./static/search-solid.svg" width="100%" height="100%" fill="currentColor" class="bi bi-search"></button>
             </form>
             </div>  
-            <!-- <img src="static/search.png" class="mic-icon"> -->
         </div>  
         <div class="nav-right flex-div">   
-            <a href="uploadvideo"><img src="static/add.png"></a>
-            <a href="login"><img src="static/user.png" class="user-icon"></a>      
+            <a href="uploadvideo"><img src="./static/plus-circle.svg" width="100%" height="100%" fill="currentColor"></a>
+            <a href="login"><img src="./static/person-fill.svg" width="100%" height="100%" fill="currentColor"></a>      
         </div>   
     </nav>
     </header>';

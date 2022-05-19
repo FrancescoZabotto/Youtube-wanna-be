@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `canale` (
-  `username` char(32) NOT NULL,
-  `subscribes` int(32) NOT NULL
+  `username` char(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

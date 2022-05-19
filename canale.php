@@ -12,8 +12,8 @@ if(isset( $_SESSION['username'])){
     }
 
     //da modificare
-    $sql = "SELECT COUNT(iscrizioni_persona.canaleuser) AS iscritti FROM iscrizioni_persona
-    WHERE iscrizioni_persona.iscrivente='$username'";
+    $sql = "SELECT COUNT(iscrizioni_persona.iscrivente) AS iscritti FROM iscrizioni_persona
+    WHERE iscrizioni_persona.canaleuser='$username'";
     $iscritti="0";
 
     $result = $conn->query($sql);

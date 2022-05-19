@@ -31,7 +31,6 @@ function cercatore($username,$canale){
 
     $result = $conn->query($sql1);
     if($result->num_rows == 0){
-        $row = $result->fetch_assoc();
         $sql = "INSERT INTO iscrizioni_persona (iscrivente,canaleuser) VALUES ('$username','$canale')";
         if($conn->query($sql) === TRUE){
             $risultiamo= "OK";
