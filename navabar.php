@@ -14,7 +14,7 @@ if(isset($_SESSION['username'])){
 echo '<header>
     <nav class="flex-div">
     <div class="nav-left flex-div">
-        <a href="home"><img src="static/youtubewhite.png" class="logo"></a>
+        <a href="home"><img src="./static/Logo_of_Youtube.svg" class="logo"></a>
     </div>
     <div class="nav-middle flex-div">
         <div class="search-box">
@@ -34,7 +34,7 @@ echo '<header>
     echo '<header>
     <nav class="flex-div">
         <div class="nav-left flex-div">
-            <a href="home"><img src="static/youtubewhite.png" class="logo"></a>
+            <a href="home"><img src="./static/Logo_of_Youtube.svg" class="logo"></a>
         </div>
         <div class="nav-middle flex-div">
             <div class="search-box">

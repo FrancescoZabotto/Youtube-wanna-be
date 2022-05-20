@@ -84,9 +84,11 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
         $time=date("Y-m-d H:i:s");
 
 
-
+        $titolo = $_POST['titolo'];
+        $descrizione = $_POST['descrizione'];
+        
         //METTI TUTTI I DATI E FAI LA QUERI, PRENDI IL VIDEO ID E POI SALVA IL FILE, potrei usare NOW() su mysql, ma non volgio rischaire
-        $sql="INSERT INTO `video` (`video_id`, `username`, `likes`, `dislikes`, `videoview`, `datains`, `descrizione`, `titolo`) VALUES (NULL, '".$username."', 0, 0, 0, '".$time."', '".$_POST['descrizione']."', '".$_POST['titolo']."')";
+        $sql="INSERT INTO `video` (`username`, `likes`, `dislikes`, `videoview`, `datains`, `descrizione`, `titolo`) VALUES ('".$username."', 0, 0, 0, '".$time."', '".$descrizione."', '".$titolo."')";
         $result = $conn->query($sql);
 
             if($result == 1){

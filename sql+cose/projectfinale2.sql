@@ -122,7 +122,6 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `categorie` (`categorie`) VALUES ('Videogiochi'), ('Anime'), ('Musica'), ('Cucina'), ('Sport'); 
---aggiunto di mio pugno
 --
 -- Indici per le tabelle scaricate
 --

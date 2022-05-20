@@ -115,7 +115,7 @@ if(isset($_SESSION['username'])){
             }
         }
 }
-
+    //style='height:200px;width:100%;' da sistemare
     function inseriscigame(data){
         if(data["videogiochi"] != undefined){
             if(data["videogiochi"].length > 0)
@@ -124,7 +124,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 var t1 = document.getElementsByClassName("videogame-container")[0];
                 while(i<data["videogiochi"].length && i<7){
-                    t1.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["videogiochi"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["videogiochi"][i]["username"]+"/"+data["videogiochi"][i]["video_id"]+"/"+"miniatura"+data["videogiochi"][i]["video_id"]+".jpg' alt='"+data["videogiochi"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogiochi"][i]["titolo"]+"</h5><div>"+data["videogiochi"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["videogiochi"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t1.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["videogiochi"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["videogiochi"][i]["username"]+"/"+data["videogiochi"][i]["video_id"]+"/"+"miniatura"+data["videogiochi"][i]["video_id"]+".jpg' alt='"+data["videogiochi"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogiochi"][i]["titolo"]+"</h5><div>"+data["videogiochi"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["videogiochi"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
