@@ -32,7 +32,6 @@ if(isset( $_SESSION['username'])){
 if(isset($_POST['username']) || isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    echo md5($password)."<br>";
     $conn = new mysqli("localhost", "root", "", "projectfinale");
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
@@ -48,11 +47,11 @@ if(isset($_POST['username']) || isset($_POST['password'])){
             header("Location: home");
         }
         else{
-            echo "Password Sbagliata";
+            echo "<script>alert('ERRORE:Password Sbagliata');</script>";
         }
     }
     else{
-        echo "L'untente non esiste";
+        echo "<script>alert('ERRORE:L'untente non esiste');</script>";
     }
 
 }

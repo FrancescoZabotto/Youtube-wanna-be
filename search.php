@@ -26,6 +26,7 @@ if(isset($_POST["search"]))
                     if($result->num_rows != 0){
                         $TOT=array();
                     while($row = $result->fetch_assoc()){
+                            $row["estensione"]=estensione($row["video_id"],$row["username"]);
                             $TOT[] = $row;
                     }
                 }   
@@ -53,6 +54,7 @@ if(isset($_POST["search"]))
                     if($result->num_rows != 0){
                         $TOT=array();
                     while($row = $result->fetch_assoc()){
+                            $row["estensione"]=estensione($row["video_id"],$row["username"]);
                             $TOT[] = $row;
                     }
                     }
@@ -84,7 +86,7 @@ else
                         echo '<div class="card">
                                 <a href="video.php?video='.$TOT[$i]["video_id"].'"
                                     <div>
-                                    <img style="width:500px;height:300px" class="video" src="./video/'.$TOT[$i]["username"].'/'.$TOT[$i]["video_id"].'/miniatura'.$TOT[$i]["video_id"].'.jpg" alt="'.$TOT[$i]["titolo"].'"
+                                    <img style="width:500px;height:300px" class="video" src="./video/'.$TOT[$i]["username"].'/'.$TOT[$i]["video_id"].'/miniatura'.$TOT[$i]["video_id"].$TOT[$i]["estensione"].'" alt="'.$TOT[$i]["titolo"].'"
                                     </div>
                                     <div>
                                     <br>
@@ -122,7 +124,7 @@ else
                             echo '<div class="card">
                                     <a href="video.php?video='.$TOT[$i]["video_id"].'"
                                         <div>
-                                        <img style="width:500px;height:300px" class="video" src="./video/'.$TOT[$i]["username"].'/'.$TOT[$i]["video_id"].'/miniatura'.$TOT[$i]["video_id"].'.jpg" alt="'.$TOT[$i]["titolo"].'"
+                                        <img style="width:500px;height:300px" class="video" src="./video/'.$TOT[$i]["username"].'/'.$TOT[$i]["video_id"].'/miniatura'.$TOT[$i]["video_id"].$TOT[$i]["estensione"].'" alt="'.$TOT[$i]["titolo"].'"
                                         </div>
                                         <div>
                                         <br>

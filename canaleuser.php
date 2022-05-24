@@ -49,7 +49,7 @@ else
                 var i=0;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data.length){
-                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data[i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data[i]["username"]+"/"+data[i]["video_id"]+"/"+"miniatura"+data[i]["video_id"]+".jpg' alt='"+data[i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data[i]["titolo"]+"</h5><div>"+data[i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data[i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data[i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data[i]["username"]+"/"+data[i]["video_id"]+"/"+"miniatura"+data[i]["video_id"]+data[i]["estensione"]+"' alt='"+data[i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data[i]["titolo"]+"</h5><div>"+data[i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data[i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   

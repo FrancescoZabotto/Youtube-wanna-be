@@ -42,4 +42,23 @@ function cercatore($username,$canale){
 
     echo $risultiamo;
 }
+
+function estensione($videoid,$username){
+    $img = "video/".$username."/".$videoid."/miniatura".$videoid;
+    if(file_exists($img.".jpeg")){
+        return ".jpeg";
+    }
+    else if(file_exists($img.".png")){
+        return ".png";
+    }
+    else if(file_exists($img.".gif")){
+        return ".gif";
+    }
+    else{
+        return ".jpg";
+    }
+}
+
+
+
 ?>

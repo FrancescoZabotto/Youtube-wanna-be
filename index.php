@@ -10,10 +10,9 @@ if(isset($_SESSION['username'])){
     }
 }
 
-    /* la chiamo sia qui che su canale, prova a vedere se riesci a chiamarla una volta sola */
+    //impedisci sql injection
 
-    //per il fatto di chiaro o scuro, o fai con la session oppure fai 2 file css chiaro e scuro e ti adatti a mostrare in base all'impostazione
-    
+
     /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/
     //https://codepen.io/lazehang/pen/YzYXwjE 
     //ho cambiato un po di titoli
@@ -106,7 +105,7 @@ if(isset($_SESSION['username'])){
                 var i=0;
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 while(i<data["user"].length && i<7){
-                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+".jpg' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    document.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["user"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["user"][i]["username"]+"/"+data["user"][i]["video_id"]+"/"+"miniatura"+data["user"][i]["video_id"]+data["user"][i]["estensione"]+"' alt='"+data["user"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["user"][i]["titolo"]+"</h5><div>"+data["user"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["user"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }
@@ -124,7 +123,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 var t1 = document.getElementsByClassName("videogame-container")[0];
                 while(i<data["videogiochi"].length && i<7){
-                    t1.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["videogiochi"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["videogiochi"][i]["username"]+"/"+data["videogiochi"][i]["video_id"]+"/"+"miniatura"+data["videogiochi"][i]["video_id"]+".jpg' alt='"+data["videogiochi"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogiochi"][i]["titolo"]+"</h5><div>"+data["videogiochi"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["videogiochi"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t1.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["videogiochi"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["videogiochi"][i]["username"]+"/"+data["videogiochi"][i]["video_id"]+"/"+"miniatura"+data["videogiochi"][i]["video_id"]+data["videogiochi"][i]["estensione"]+"' alt='"+data["videogiochi"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["videogiochi"][i]["titolo"]+"</h5><div>"+data["videogiochi"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["videogiochi"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -145,7 +144,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 t2 = document.getElementsByClassName("cucina-container")[0];
                 while(i<data["cucina"].length && i<7){
-                    t2.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["cucina"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["cucina"][i]["username"]+"/"+data["cucina"][i]["video_id"]+"/"+"miniatura"+data["cucina"][i]["video_id"]+".jpg' alt='"+data["cucina"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["cucina"][i]["titolo"]+"</h5><div>"+data["cucina"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["cucina"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t2.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["cucina"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["cucina"][i]["username"]+"/"+data["cucina"][i]["video_id"]+"/"+"miniatura"+data["cucina"][i]["video_id"]+data["cucina"][i]["estensione"]+"' alt='"+data["cucina"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["cucina"][i]["titolo"]+"</h5><div>"+data["cucina"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["cucina"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -167,7 +166,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 t3 = document.getElementsByClassName("sport-container")[0];
                 while(i<data["sport"].length && i<7){
-                    t3.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["sport"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["sport"][i]["username"]+"/"+data["sport"][i]["video_id"]+"/"+"miniatura"+data["sport"][i]["video_id"]+".jpg' alt='"+data["sport"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["sport"][i]["titolo"]+"</h5><div>"+data["sport"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["sport"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t3.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["sport"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["sport"][i]["username"]+"/"+data["sport"][i]["video_id"]+"/"+"miniatura"+data["sport"][i]["video_id"]+data["sport"][i]["estensione"]+"' alt='"+data["sport"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["sport"][i]["titolo"]+"</h5><div>"+data["sport"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["sport"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -189,7 +188,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 t4 = document.getElementsByClassName("musica-container")[0];
                 while(i<data["musica"].length && i<7){
-                    t4.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["musica"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["musica"][i]["username"]+"/"+data["musica"][i]["video_id"]+"/"+"miniatura"+data["musica"][i]["video_id"]+".jpg' alt='"+data["musica"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["musica"][i]["titolo"]+"</h5><div>"+data["musica"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["musica"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t4.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["musica"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["musica"][i]["username"]+"/"+data["musica"][i]["video_id"]+"/"+"miniatura"+data["musica"][i]["video_id"]+data["musica"][i]["estensione"]+"' alt='"+data["musica"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["musica"][i]["titolo"]+"</h5><div>"+data["musica"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["musica"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   
@@ -211,7 +210,7 @@ if(isset($_SESSION['username'])){
                 var espressione = new RegExp('^(jpg|jpeg|png|gif)$');
                 var t5 = document.getElementsByClassName("anime-container")[0];
                 while(i<data["anime"].length && i<7){
-                    t5.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["anime"][i]["video_id"]+" <div class='card'><img class='video' src='./video/"+data["anime"][i]["username"]+"/"+data["anime"][i]["video_id"]+"/"+"miniatura"+data["anime"][i]["video_id"]+".jpg' alt='"+data["anime"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["anime"][i]["titolo"]+"</h5><div>"+data["anime"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["anime"][i]["videoview"]+"</div></div></div></div></div></div>";
+                    t5.getElementsByClassName("row")[0].innerHTML += "<div class='col-12 col-md-6 col-lg-3 "+i+"' style='padding:3px;'><a href=video.php?video="+data["anime"][i]["video_id"]+" <div class='card'><img style='height:200px;width:100%;' class='video' src='./video/"+data["anime"][i]["username"]+"/"+data["anime"][i]["video_id"]+"/"+"miniatura"+data["anime"][i]["video_id"]+data["anime"][i]["estensione"]+"' alt='"+data["anime"][i]["titolo"]+"'><div class='video-info'><div class='card-text'><h5 class='card-title'>"+data["anime"][i]["titolo"]+"</h5><div>"+data["anime"][i]["username"]+"</div><div class='row'><div class='col-2'></div><div class='col-8'>"+data["anime"][i]["videoview"]+"</div></div></div></div></div></div>";
                     i++;
                 }
             }   

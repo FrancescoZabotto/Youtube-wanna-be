@@ -1,5 +1,24 @@
 <?php
+function estensione($videoid,$username){
+    $img = "video/".$username."/".$videoid."/miniatura".$videoid;
+    if(file_exists($img.".jpeg")){
+        return ".jpeg";
+    }
+    else if(file_exists($img.".png")){
+        return ".png";
+    }
+    else if(file_exists($img.".gif")){
+        return ".gif";
+    }
+    else{
+        return ".jpg";
+    }
+}
+
+
 session_start();
+
+
 
 $Dativideo = array();
 
@@ -19,6 +38,7 @@ if(isset($_SESSION['username'])){
     $TOT=array();
     if($result->num_rows != 0){
     while($row = $result->fetch_assoc()){
+            $row["estensione"]=estensione($row["video_id"],$row["username"]);
             $TOT[] = $row;
     }   
     }
@@ -34,6 +54,7 @@ $result = $conn->query($sql2);
 if($result->num_rows != 0){
     $TOT=array();
     while($row = $result->fetch_assoc()){
+        $row["estensione"]=estensione($row["video_id"],$row["username"]);
         $TOT[] = $row;
     }
     $Dativideo['videogiochi'] = $TOT;
@@ -46,6 +67,7 @@ $result = $conn->query($sql2);
 $TOT=array();
 if($result->num_rows != 0){
     while($row = $result->fetch_assoc()){
+        $row["estensione"]=estensione($row["video_id"],$row["username"]);
         $TOT[] = $row;
     }
     $Dativideo['cucina'] = $TOT;
@@ -59,6 +81,7 @@ $result = $conn->query($sql2);
 $TOT=array();
 if($result->num_rows != 0){
     while($row = $result->fetch_assoc()){
+        $row["estensione"]=estensione($row["video_id"],$row["username"]);
         $TOT[] = $row;
     }
     $Dativideo['sport'] = $TOT;
@@ -72,6 +95,7 @@ $result = $conn->query($sql2);
 $TOT=array();
 if($result->num_rows != 0){
     while($row = $result->fetch_assoc()){
+        $row["estensione"]=estensione($row["video_id"],$row["username"]);
         $TOT[] = $row;
     }
     $Dativideo['musica'] = $TOT;
@@ -85,6 +109,7 @@ $result = $conn->query($sql2);
 $TOT=array();
 if($result->num_rows != 0){
     while($row = $result->fetch_assoc()){
+        $row["estensione"]=estensione($row["video_id"],$row["username"]);
         $TOT[] = $row;
     }
     $Dativideo['anime'] = $TOT;

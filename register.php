@@ -60,7 +60,7 @@ if(isset( $_POST['username']) && isset($_POST['password']) && isset($_POST['conf
         
             $sql = "INSERT INTO `utenti` (`email`, `nome`, `cognome`, `username`, `password`) VALUES ('$email', '$nome', '$cognome','$username', '$password')";
             if($conn->query($sql) === TRUE){
-                echo "Registrazione avvenuta con successo";
+                echo "<script>alert('Registrazione avvenuta con successo');</script>";
                 $_SESSION['username'] = $username;
                 mkdir("video/".$username);
                 $sql="INSERT INTO `canale` (`username`) VALUES ('$username');";
@@ -70,18 +70,18 @@ if(isset( $_POST['username']) && isset($_POST['password']) && isset($_POST['conf
                 header("Location: home");
             }
             else{
-                echo "Errore nella registrazione";
+                echo "<script>alert('ERRORE:C'è stato un errore nella registrazione');</script>";
             }
         }
         else if($result2->num_rows > 0){
-            echo "Account già esistente";
+            echo "<script>alert('ERRORE:Account già esistente');</script>";
         }
         else if($result->num_rows > 0){
-            echo "Nome utente già utilizzato";
+            echo "<script>alert('ERRORE:Nome utente già utilizzato');</script>";
     }
     }
     else{
-        echo "Le password non corrispondono";
+        echo "<script>alert('ERRORE:Le password non corrispondono');</script>";
     }
 }
 ?>

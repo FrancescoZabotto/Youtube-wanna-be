@@ -70,6 +70,18 @@ nav{
     outline: 0;
     background: transparent;
 }
+.btnacc{
+    background-color: #fff;
+    border: 1px solid #ccc; /*ccc*/
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 3px 5px;
+    border-radius: 25px;
+}
+.btnacc:hover{
+    background-color: lightcoral;
+}
 .nav-middle .mic-icon{
     height:20px;
     width:20px;

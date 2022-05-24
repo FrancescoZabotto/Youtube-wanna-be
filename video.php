@@ -92,6 +92,7 @@ $result = $conn->query($sql1);
 <html>
 <head>
 <link rel="stylesheet" href="./css/video.css?v='<?php echo $version; ?>'">
+<link rel="stylesheet" href="./css/test.css">
 </head>
 <body>
 
@@ -108,8 +109,8 @@ $result = $conn->query($sql1);
             <h2><?php echo $titolo; ?></h2>
             <div class="row">
                 <div class="col-6"><?php echo "Views: ".$videoview; ?></div>
-                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-up.svg"  width="23px" height="23px" onclick="like()" fill="currentColor" id=like><div id="count">'.$likes.'</div>'; ?></div>
-                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-down.svg"  width="23px" height="23px" onclick="dislike()" fill="currentColor" id=dislike><div id="countt">'.$dislikes.'</div>'; ?></div>
+                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-up.svg"  width="23px" height="23px" onclick="like(this)" fill="currentColor" id=like><div id="count">'.$likes.'</div>'; ?></div>
+                <div class="col-3"><?php echo '<img src="./static/hand-thumbs-down.svg"  width="23px" height="23px" onclick="dislike(this)" fill="currentColor" id=dislike><div id="countt">'.$dislikes.'</div>'; ?></div>
             </div>
             <hr>
             <div class="row">
@@ -124,61 +125,60 @@ $result = $conn->query($sql1);
         </div>
     </div>
 </div>
-</div>
-<div class="relative h-6 w-6">
-        <input type="radio" class="z-10 relative like-button opacity-0 h-full w-full cursor-pointer" name="like" value="like" />
 
-</div>
+
+
 
     <script>
         var video = document.getElementById("myVideo");
         video.play();
 
-        function like(){
-            var x = document.getElementById("like");
-            const number=1;
+        const countlike = document.getElementById("count");
+        const countdislike = document.getElementById("countt");
+    console.log(document.getElementById("like"));
+
+
+        function like(x){
             var y=x.src;
-            test=0;
             if(y == "http://localhost/Normal/static/hand-thumbs-up.svg"){
             x.setAttribute("src","http://localhost/Normal/static/hand-thumbs-up-fill.svg");
-            var count = document.getElementById('count');
-            count.innerHTML = count.innerHTML + number; 
-            count.textContent = number.toString();
+            countlike.innerText = parseInt(countlike.innerText) + 1;
+
+            console.log(countlike);
+
+            var z = document.getElementById("dislike");
+            if(z=="http://localhost/Normal/static/hand-thumbs-down-fill.svg"){
+            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
+            ountdislike.innerText = parseInt(countdislike.innerText) - 1;
+            }
+
             }
             else{
             x.setAttribute("src","http://localhost/Normal/static/hand-thumbs-up.svg");
-            var count = document.getElementById('count');
-            count.innerHTML = count.innerHTML - number;
-            //count.textContent = number.toString();
-            var z = document.getElementById("dislike");
-            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
-            var countt = document.getElementById('countt');
-            if(test=0){countt.innerHTML = countt.innerHTML - number;}else{countt.innerHTML = countt.innerHTML + number;countt.textContent = number.toString();}
-            test++;
+            countlike.innerText = parseInt(countlike.innerText) - 1;
             }
         }
 
-        function dislike(){
-            var z = document.getElementById("dislike");
-            const number=1;
+        function dislike(z){
+
             var y=z.src;
             if(y == "http://localhost/Normal/static/hand-thumbs-down.svg"){
             z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down-fill.svg");
-            var count = document.getElementById('countt');
-            count.innerHTML = count.innerHTML + number; 
-            count.textContent = number.toString();
+            countdislike.innerText = parseInt(countdislike.innerText) + 1;
+
+            var m = document.getElementById("like");
+            if(m=="http://localhost/Normal/static/hand-thumbs-up-fill.svg"){
+            m.setAttribute("src","http://localhost/Normal/static/hand-thumbs-up.svg");
+            countlike.innerText = parseInt(countlike.innerText) - 1;
+            }
+
             }
             else{
             z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
-            var count = document.getElementById('countt');
-            count.innerHTML = count.innerHTML - number;
+            ountdislike.innerText = parseInt(countdislike.innerText) - 1;
             }
         }
 
-        function normaldis(){
-            var z = document.getElementById("dislike");
-            z.setAttribute("src","http://localhost/Normal/static/hand-thumbs-down.svg");
-        }
         
     </script>
 </body>

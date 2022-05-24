@@ -6,6 +6,8 @@ if(isset( $_SESSION['username'])){
 else{
     header("Location: login");
 }
+
+
 ?>
 <html>
     <head>
@@ -15,7 +17,6 @@ else{
 
     <div class="login-container">
         <div class="login-form">
-            <div class="mesaaggi-errore"></div>
         <form action="" method="post" enctype="multipart/form-data" style="width:800px;">
             <h1 style="color:#f26964">Inserisci Video</h1>
             <input type="text" name="titolo" placeholder="Titolo" required>
@@ -50,6 +51,9 @@ else{
 <?php
 if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video']['size'] > 0){
 
+    //svuoto il messaggio
+    $msg="";
+
     //guardo se il file sia valido
     $check1 = getimagesize($_FILES["miniatura"]["tmp_name"]);
 
@@ -60,6 +64,15 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
         // accetta solo jpg jepeg png e gif per miniatura e mp4 per video
         $extmin=pathinfo($_FILES["miniatura"]["name"],PATHINFO_EXTENSION);
         $extvideo=pathinfo($_FILES["video"]["name"],PATHINFO_EXTENSION);
+
+        /*$infov=getimagesize($_FILES["miniatura"]["tmp_name"]);
+        $width=$infov[0];
+        $height=$infov[1];
+
+        var_dump($width);   echo "<br>";
+        var_dump($height);  echo "<br>";
+        $_FILES["miniatura"]["tmp_name"]= */
+
 
         //imposto una dimensione massima dei file
         $sizem= $_FILES["miniatura"]["size"]; //restituisce la dimensione del file in byte
@@ -122,25 +135,22 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
                             $tag=$_POST['tag'];
                             $sql2="INSERT INTO `categorie_video` (`categorie`, `video_id`) VALUES ('$tag', '$id')";
                             $result2 = $conn->query($sql2);
-                            var_dump($result2);
-                            echo "The file ". htmlspecialchars(basename( $_FILES["video"]["name"])). " has been uploaded." . "<br>";
                         } 
                         else{
-                            echo "Sorry, there was an error uploading your file.";
+                            echo "<script>alert('ERRORE:C'è stato un errore nell'upload del video');</script>";
                             $conn->close();
                             exit();
                         }
                         
                         //upload miniatura
                         if(move_uploaded_file($_FILES["miniatura"]["tmp_name"], $target_imm)) {
-                            echo "The file ".htmlspecialchars( basename( $_FILES["miniatura"]["name"])). " has been uploaded.";
+                            echo "<script>alert('I file sono stati caricati con successo');</script>";
                             $_FILES=NULL;
                             $_POST=NULL;
-                            var_dump($_FILES);
-                            var_dump($_POST);
+                            $conn->close();
                         } 
                         else{
-                            echo "Sorry, there was an error uploading your file.";
+                            echo "<script>alert('ERRRE:C'è stato un errore nell'upload della miniatura');</script>";
                             $conn->close();
                             exit();
                         }
@@ -148,21 +158,21 @@ if(isset($_POST['upload']) && $_FILES['miniatura']['size'] > 0 && $_FILES['video
                     }
                 }
                 else{
-                    echo "Problemi con il caricamento del video";
+                    echo "<script>alert('ERRORE:Problemi con il caricamento del video');</script>";
                     $conn->close();
                 }
             
             }
             else{
-            echo "Problema con l'inserimento del video nel database";
-            $conn->close();
+                echo "<script>alert('ERRORE: Problema con l'inserimento del video nel database');</script>";
+                $conn->close();
         }
     }
     else{
-        echo "Formato non consentito o dimensione dei file troppo grandi (max dimensione video = 50 gb e max dimensione miniatura = 1 gb)";
+        echo "<script>alert('ERRORE:Formato non consentito o dimensione dei file troppo grandi (max dimensione video = 50 gb e max dimensione miniatura = 1 gb)');</script>";
     }
 }
 elseif(isset($_POST['upload'])){
-    echo "Ci sono problemi con i tuoi file";
+    echo "<script>alert('ERRORE: Ci sono problemi con i tuoi file');</script>";
 }
 ?>
