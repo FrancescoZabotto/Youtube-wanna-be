@@ -96,7 +96,7 @@ $result = $conn->query($sql1);
 </head>
 <body>
 
-<div class="video-c" > <!--stai attento al paddding con il cell-->
+<div class="video-c" > <!--stai attento al paddding con il cell -->
     <div class="container">
     <div class="row">
         <div class="video-container col-12">
@@ -137,7 +137,7 @@ $result = $conn->query($sql1);
         const countdislike = document.getElementById("countt");
     console.log(document.getElementById("like"));
 
-
+        //non funzionano
         function like(x){
             var y=x.src;
             if(y == "http://localhost/Normal/static/hand-thumbs-up.svg"){

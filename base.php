@@ -1,6 +1,6 @@
 <?php  
 
-$version = time(); /* porcaccio il clero, cambia la versione del css me lo aggiorna tolgiendomi il problema del css su cache */ 
+$version = time(); /* cambia la versione del css me lo aggiorna tolgiendomi il problema del css su cache */ 
 
 
 session_start();

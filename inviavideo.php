@@ -45,7 +45,6 @@ if(isset($_SESSION['username'])){
     $Dativideo['user'] = $TOT;
 }
 
-//$sql2 = "SELECT * FROM video WHERE video.idvideo NOT IN (SELECT video.idvideo FROM video INNER JOIN iscrizioni_persona ON iscrizionipersona.idvideo=video.idvideo WHERE iscrizionipersona.username='$username')";
 $sql2= "SELECT video_id,username,titolo,videoview,datains FROM video  
 INNER JOIN categorie_video USING (video_id)
 WHERE categorie_video.categorie='Videogiochi'

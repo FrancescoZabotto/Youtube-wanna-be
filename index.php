@@ -11,10 +11,6 @@ if(isset($_SESSION['username'])){
 }
 
     //impedisci sql injection
-
-
-    /*57:48 https://www.youtube.com/watch?v=4ykAepVkG5Y&t=837s&ab_channel=EasyTutorials*/
-    //https://codepen.io/lazehang/pen/YzYXwjE 
     //ho cambiato un po di titoli
     //sistema categorie
 ?>
